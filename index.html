@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="personalInfo">
+            <div class="profileImg">
+                <input id="defaultInput" type="file" name="file" id="file" hidden>
+                <button id="alternativeInput" type="button"><img src="assets/profile.png" alt="Profile image"></button>
+            </div>
+
+            <div class="information">
+                <div class="header">
+                    <h1>THUAN LE DUC</h1>
+                    <p>Vi tri ung tuyen</p>
+                </div>
+
+                <div class="infoLines">
+                    <div class="box">
+                        <div class="left">
+                            <p>Ngay sinh:</p>
+                        </div>
+                        <div class="right">
+                            <input type="text" placeholder="20/11/2023" name="" id="">
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="left">
+                            <p>Gioi tinh:</p>
+                        </div>
+                        <div class="right">
+                            <input type="text" placeholder="Nam/Nu" name="" id="">
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="left">
+                            <p>So dien thoai:</p>
+                        </div>
+                        <div class="right">
+                            <input type="tel" placeholder="0909888777" name="" id="">
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="left">
+                            <p>Email:</p>
+                        </div>
+                        <div class="right">
+                            <input type="email" placeholder="abc@gmail.com" name="" id="">
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="left">
+                            <p>Dia chi</p>
+                        </div>
+                        <div class="right">
+                            <input type="text" placeholder="117-119 Ly Chinh Thang, phuong Vo Thi Sau, Quan 3, Tp.HCM" name="" id="">
+                        </div>
+                    </div>  
+                </div>   
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const alternativeInput = document.querySelector('#alternativeInput');
+        const defaultInput = document.querySelector('#defaultInput');
+
+        alternativeInput.onclick = e => defaultInput.click();
+    </script>
+</body>
+</html>
