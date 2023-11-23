@@ -21,14 +21,14 @@ body {
     margin: 0 20%;
 }
 
-.container {
+.container-cv {
     position: relative;
     width: 100%;
     min-height: 100px;
     background-color: #fff;
 }
 
-.container .personalInfo {
+.container-cv .personalInfo {
     display: grid;
     grid-template-columns: 3fr 9fr;
     padding-bottom: 1rem;
