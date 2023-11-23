@@ -13,3 +13,12 @@ textArea.forEach((text) => {
 		text.style.height = `${scrHeight}px`;
 	};
 });
+
+defaultInput.onchange = (e) => {
+	const file = e.target.files[0];
+	const reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.onloadend = () => {
+		document.querySelector("#avatar").src = reader.result;
+	};
+}
