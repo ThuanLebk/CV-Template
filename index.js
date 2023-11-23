@@ -27,9 +27,9 @@ defaultInput.onchange = (e) => {
 
 // show notification when hover on avatar
 avatar.onmouseover = (e) => {
-	imgChangeNoti.classList.remove('d-none');
+	imgChangeNoti.style.display = "block";
 }
 
 avatar.onmouseout = (e) => {
-	imgChangeNoti.classList.add('d-none');
+	imgChangeNoti.style.display = "none";
 }
