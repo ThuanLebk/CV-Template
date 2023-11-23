@@ -1,6 +1,7 @@
 const alternativeInput = document.querySelector("#alternativeInput");
 const defaultInput = document.querySelector("#defaultInput");
-
+const avatar = document.querySelector("#avatar");
+const imgChangeNoti = document.querySelector("#imgChangeNoti");
 alternativeInput.onclick = (e) => defaultInput.click();
 
 const textArea = document.querySelectorAll("textarea");
@@ -14,11 +15,21 @@ textArea.forEach((text) => {
 	};
 });
 
+// update avatar for the input image
 defaultInput.onchange = (e) => {
 	const file = e.target.files[0];
 	const reader = new FileReader();
 	reader.readAsDataURL(file);
 	reader.onloadend = () => {
-		document.querySelector("#avatar").src = reader.result;
+		avatar.src = reader.result;
 	};
+}
+
+// show notification when hover on avatar
+avatar.onmouseover = (e) => {
+	imgChangeNoti.classList.remove('d-none');
+}
+
+avatar.onmouseout = (e) => {
+	imgChangeNoti.classList.add('d-none');
 }
