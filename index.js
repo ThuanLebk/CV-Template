@@ -88,9 +88,11 @@ function addBox(containerId) {
             </div>
         `;
     }
-
+    newBox.onclick = function () {
+        const controls = this.querySelector('.controls');
+        controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
+    };
     boxContainer.appendChild(newBox);
-    updateButtons(containerId);
 }
 
 function deleteBox(containerId) {
@@ -104,11 +106,11 @@ function deleteBox(containerId) {
     }
 }
 
-function updateButtons(containerId) {
-    var boxContainer = document.getElementById(containerId);
-    var boxes = boxContainer.getElementsByClassName('box');
-    var controls = boxContainer.querySelector('.controls');
+// function updateButtons(containerId) {
+//     var boxContainer = document.getElementById(containerId);
+//     var boxes = boxContainer.getElementsByClassName('box');
+//     var controls = boxContainer.querySelector('.controls');
 
-    // Hide buttons if no boxes are present
-    controls.style.display = boxes.length > 0 ? 'block' : 'none';
-}
+//     // Hide buttons if no boxes are present
+//     controls.style.display = boxes.length > 0 ? 'block' : 'none';
+// }
