@@ -111,6 +111,17 @@ textarea::-webkit-scrollbar {
     width: 0px;
 }
 
+.box {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.controls {
+    display: none; /* initially hide the buttons */
+}
+
 .education .box , .experiences .box, .activities .box, .certificates .box, .awards .box, .skills .box, .projects .box {
     display: flex;
     min-width: 200px;
@@ -182,4 +193,27 @@ textarea::-webkit-scrollbar {
 #avatar {
     max-width: 100%;
     max-height: 100%;
+}
+
+.controls {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    flex-direction: column; /* Arrange buttons in a column */
+    left: -7rem;
+}
+
+.controls button {
+    margin-bottom: 10px;
+    padding: 2px 4px; /* Add padding for better appearance */
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Add cursor pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.controls button:hover {
+    background-color: #45a049; /* Darker green color on hover */
 }

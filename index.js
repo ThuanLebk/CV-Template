@@ -26,10 +26,89 @@ defaultInput.onchange = (e) => {
 }
 
 // show notification when hover on avatar
-avatar.onmouseover = (e) => {
-	imgChangeNoti.style.display = "block";
+
+avatar.addEventListener("mouseenter", function () {
+    avatar.style.border = "2px solid #4CAF50"; // Add a border
+    avatar.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)"; // Add a box shadow
+});
+
+avatar.addEventListener("mouseleave", function () {
+    avatar.style.border = "none";
+    avatar.style.boxShadow = "none";
+});
+
+
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach(box => {
+    box.onclick = function () {
+        const controls = this.querySelector('.controls');
+        controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
+    };
+});
+    
+
+function addBox(containerId) {
+    var boxContainer = document.getElementById(containerId);
+    var newBox = document.createElement('div');
+    newBox.className = 'box';
+
+    // Similar structure as your initial box
+	
+    if (containerId === 'certificates-container' || containerId === 'awards-container') {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button class="add-button" onclick="addBox('${containerId}')">Add</button>
+                <button class="delete-button" onclick="deleteBox('${containerId}')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="Job objective" name=""></textarea>
+                <span>_</span>
+                <textarea placeholder="Job objective" name=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+            </div>
+        `;
+    } else {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button class="add-button" onclick="addBox('${containerId}')">Add</button>
+                <button class="delete-button" onclick="deleteBox('${containerId}')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="Job objective" name=""></textarea>
+                <span>_</span>
+                <textarea placeholder="Job objective" name=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+            </div>
+        `;
+    }
+
+    boxContainer.appendChild(newBox);
+    updateButtons(containerId);
 }
 
-avatar.onmouseout = (e) => {
-	imgChangeNoti.style.display = "none";
+function deleteBox(containerId) {
+    var boxContainer = document.getElementById(containerId);
+    var boxes = boxContainer.getElementsByClassName('box');
+
+    // Check if there is at least one box left before removing
+    if (boxes.length > 1) {
+        boxContainer.removeChild(boxes[boxes.length - 1]);
+        updateButtons(containerId);
+    }
+}
+
+function updateButtons(containerId) {
+    var boxContainer = document.getElementById(containerId);
+    var boxes = boxContainer.getElementsByClassName('box');
+    var controls = boxContainer.querySelector('.controls');
+
+    // Hide buttons if no boxes are present
+    controls.style.display = boxes.length > 0 ? 'block' : 'none';
 }
