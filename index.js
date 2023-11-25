@@ -41,12 +41,35 @@ avatar.addEventListener("mouseleave", function () {
 const boxes = document.querySelectorAll('.box');
 
 boxes.forEach(box => {
+
+    // box.onfocus = function () {
+    //     box.style.border = '2px solid #ccc';
+    //     const controls = this.querySelector('.controls');
+    //     controls.style.display = 'block';
+    // }
+
+    // box.onblur= function () {
+    //     box.style.border = "none";
+    //     const controls = this.querySelector('.controls');
+    //     controls.style.display = 'none';
+    // }
+
     box.onclick = function () {
         const controls = this.querySelector('.controls');
         controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
     };
 });
-    
+
+// make controls disappear when click outside
+document.onclick = function (e) {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => {
+        const controls = box.querySelector('.controls');
+        if (controls !== null && !box.contains(e.target)) {
+            controls.style.display = 'none';
+        }
+    });
+}
 
 function addBox(containerId) {
     var boxContainer = document.getElementById(containerId);
@@ -88,10 +111,12 @@ function addBox(containerId) {
             </div>
         `;
     }
+    
     newBox.onclick = function () {
         const controls = this.querySelector('.controls');
         controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
     };
+
     boxContainer.appendChild(newBox);
 }
 

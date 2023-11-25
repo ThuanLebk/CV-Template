@@ -119,7 +119,7 @@ textarea::-webkit-scrollbar {
 }
 
 .controls {
-    display: none; /* initially hide the buttons */
+    /* display: none; initially hide the buttons */
 }
 
 .education .box , .experiences .box, .activities .box, .certificates .box, .awards .box, .skills .box, .projects .box {
