@@ -56,20 +56,10 @@ boxes.forEach(box => {
 
     box.onclick = function () {
         const controls = this.querySelector('.controls');
-        controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
+        if (controls !== null)
+            controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
     };
 });
-
-// make controls disappear when click outside
-document.onclick = function (e) {
-    const boxes = document.querySelectorAll('.box');
-    boxes.forEach(box => {
-        const controls = box.querySelector('.controls');
-        if (controls !== null && !box.contains(e.target)) {
-            controls.style.display = 'none';
-        }
-    });
-}
 
 function addBox(containerId) {
     var boxContainer = document.getElementById(containerId);
@@ -139,3 +129,111 @@ function deleteBox(containerId) {
 //     // Hide buttons if no boxes are present
 //     controls.style.display = boxes.length > 0 ? 'block' : 'none';
 // }
+const project = document.querySelector('.project');
+
+project.onclick = function () {
+    const controls = this.querySelector('.controls');
+    controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
+};
+
+function addProject() {
+    var boxContainer = document.getElementById("project-details");
+    var newBox = document.createElement('div');
+    newBox.className = 'project';
+
+    newBox.innerHTML= `
+        <div class="controls">
+            <button onclick="addProject()">Add</button>
+            <button onclick="deleteProject()">Delete</button>
+        </div>
+        <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+
+        <div class="box">
+            <div class="time">
+                <textarea placeholder="Job objective" name="" id=""></textarea>
+                <span>_</span>
+                <textarea placeholder="Job objective" name="" id=""></textarea>
+            </div>
+            <div class="description"></div>
+        </div>
+        <div class="table">
+            <div class="table-row">
+                <div class="header-cell">
+                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                </div>
+                <div class="info-cell">
+                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="header-cell">
+                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                </div>
+                <div class="info-cell">
+                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="header-cell">
+                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                </div>
+                <div class="info-cell">
+                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="header-cell">
+                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                </div>
+                <div class="info-cell">
+                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="header-cell">
+                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                </div>
+                <div class="info-cell">
+                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                </div>
+            </div>
+        </div>
+    `;
+    newBox.onclick = function () {
+        const controls = this.querySelector('.controls');
+        controls.style.display = controls.style.display === 'none' || controls.style.display === '' ? 'block' : 'none';
+    };
+
+    boxContainer.appendChild(newBox);
+    
+    return;
+}
+
+function deleteProject() {
+    var boxContainer = document.getElementById("project-details");
+    var boxes = boxContainer.getElementsByClassName('project');
+
+    // Check if there is at least one box left before removing
+    if (boxes.length > 1) {
+        boxContainer.removeChild(boxes[boxes.length - 1]);
+        updateButtons(containerId);
+    }
+}
+
+// make controls disappear when click outside
+document.onclick = function (e) {
+    const boxes = document.querySelectorAll('.box');
+    const projects = document.querySelectorAll('.project');
+    boxes.forEach(box => {
+        const controls = box.querySelector('.controls');
+        if (controls !== null && !box.contains(e.target)) {
+            controls.style.display = 'none';
+        }
+    });
+    projects.forEach(project => {
+        const controls = project.querySelector('.controls');
+        if (controls !== null && !project.contains(e.target)) {
+            controls.style.display = 'none';
+        }
+    });
+}
