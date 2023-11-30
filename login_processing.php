@@ -31,7 +31,7 @@ if (empty($_POST['username'])){
     header("Location: login.php?error=Username is required");
     exit();
 }
-elseif(empty($_POST['password'])){
+else if(empty($_POST['password'])){
     header("Location: login.php?error=Password is required");
     exit();
 }

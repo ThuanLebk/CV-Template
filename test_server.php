@@ -2,7 +2,7 @@
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $dbname = "CV_STORAGE";
     // Create a new MySQLi object and establish a connection
     $conn = new mysqli($servername, $username, $password, $dbname);
