@@ -1,7 +1,5 @@
 <?php
 
-include_once '../../controllers/login_processing.php';
-
 # check if user logged in
 if (isset($_SESSION['logged_in'])) {
     header("Location: home.php");
@@ -19,7 +17,7 @@ if (isset($_SESSION['login_username'])) {
 ?>
 
 <div class="wrapper">
-    <form action="/CV-Template/public/login" method='POST'>
+    <form action="/CV-Template/public/login_processing" method='POST'>
         <h1>Login</h1>
         <?php
         if (isset($_GET['error'])) {
