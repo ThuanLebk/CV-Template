@@ -18,11 +18,15 @@ body {
 }
 
 .nav-container {
+    position: sticky;
+    top: 46px;
+    z-index: 2;
     display: flex;
     background-color: white;
     justify-content: space-between;
     border: 1px #808080 solid;
     border-radius: 5px 5px 5px 5px;
+    margin-bottom: 20px;
 }
 
 .cv-name-input {
@@ -58,7 +62,7 @@ body {
     position: relative;
     width: 80%;
     /* max-width: 800px;  */
-    margin: 20px auto; 
+    margin: 100px auto; 
     background-color: #fff;
 }
 
