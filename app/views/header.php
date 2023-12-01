@@ -35,8 +35,9 @@
                 <li><a href="http://localhost/CV-Template/public/">Home</a></li>
                 <li><a href="http://localhost/CV-Template/public/create_cv">Create new CV</a></li>
                 <?php
-                    if (isset($_SESSION["logged_in"]))
+                    if (isset($_SESSION["logged_in"])) {
                         echo '<li><a href="http://localhost/CV-Template/public/logout">Logout</a></li>';
+                    }
                     else{
                         echo "<li><a href='http://localhost/CV-Template/public/login'>Login</a></li>
                         <li><a href='http://localhost/CV-Template/public/register'>Register</a></li>";
