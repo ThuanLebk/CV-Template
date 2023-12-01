@@ -2,7 +2,10 @@
 
 class logout extends Controller {
     public function index() {
-        $this->view('header', ['page_title' => 'Logout']);      
+        session_start();
+        $_SESSION["logged_in"] = "";
+        session_destroy();
+        header("Location: home");
     }
 }
 

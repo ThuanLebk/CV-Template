@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class login_processing extends Controller
 {
     public function validateLogin($user_username, $user_password)
@@ -63,6 +63,7 @@ class login_processing extends Controller
                 $_SESSION['login_username'] = '';
                 $_SESSION['login_password'] = '';
         
+                
                 header("Location: home");
                 exit();
             } else {

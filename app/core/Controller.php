@@ -7,7 +7,7 @@ class Controller {
     }
 
     public function view($view, $data = []) {
-        include_once '../app/views/' . $view . '.php';
+        include '../app/views/' . $view . '.php';
     }
 
     public function checkLogin() {
