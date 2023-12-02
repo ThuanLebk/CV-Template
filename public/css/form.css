@@ -112,6 +112,7 @@ body {
     font-weight: bold;
     font-size: 2rem;
     text-transform: uppercase;
+    width: 90%;
 }
 
 .infoLines .box .left {
