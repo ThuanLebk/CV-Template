@@ -31,10 +31,10 @@
                 <td>Tin</td>
                 <td>dien</td>
                 <td>
-                    <button href="" type="button" class="button-edit">
+                    <button type="button" class="button-edit">
                     Edit
                     </button>
-                    <button href="" type="button" class="button-remove">
+                    <button type="button" class="button-remove">
                     Remove
                     </button>
                 </td>
@@ -42,3 +42,5 @@
         </tbody>
     </table>
 </div>
+
+<script src="/CV-Template/public/scripts/mycv_index.js"></script>
