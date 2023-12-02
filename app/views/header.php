@@ -40,7 +40,7 @@
                     }
                     else{
                         echo "<li><a href='http://localhost/CV-Template/public/login'>Login</a></li>
-                        <li><a href='http://localhost/CV-Template/public/register'>Register</a></li>";
+                        <li><a href='http://localhost/CV-Template/public/login/register'>Register</a></li>";
                     }
                 ?>
                 <!-- <li>

@@ -17,7 +17,7 @@ if (isset($_SESSION['login_username'])) {
 ?>
 
 <div class="wrapper">
-    <form action="/CV-Template/public/login_processing" method='POST'>
+    <form action="/CV-Template/public/login/processLogin" method='POST'>
         <h1>Login</h1>
         <?php
         if (isset($_GET['error'])) {

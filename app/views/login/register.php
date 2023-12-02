@@ -9,10 +9,8 @@ if (isset($_SESSION['logged_in'])) {
 # load or reset form
 if (isset($_SESSION['login_username'])) {
     $save_username = $_SESSION['login_username'];
-    // $save_password = $_SESSION['login_password'];
 } else {
     $save_username = '';
-    // $save_password = '';
 }
 ?>
 

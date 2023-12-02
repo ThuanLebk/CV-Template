@@ -14,6 +14,14 @@ class mycv extends Controller {
     }
 
     public function edit_cv($id) {
+        
+    }
 
+    public function saveCreateCV() {
+
+    }
+
+    public function saveEditCV($id) {
+        
     }
 }
