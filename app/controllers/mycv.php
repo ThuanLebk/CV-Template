@@ -2,7 +2,7 @@
 
 class mycv extends Controller {
     public function index() {
-        $this->view('header', ['page_title' => 'Create CV', 'css' => '<link rel=stylesheet href="/CV-Template/public/css/style-app-views-mycv.css">']);
+        $this->view('header', ['page_title' => 'My CV', 'css' => '<link rel=stylesheet href="/CV-Template/public/css/style-app-views-mycv.css">']);
         $this->checkLogin();
         $this->view('mycv/index');
     }

@@ -8,11 +8,9 @@
                         <p style="color: black;"> <?= $_SESSION['logged_in'] ?> </p>
                     </div>
                     <div class="col-lg-auto ms-auto">
-                        <a href="">
-                            <button type="button" class="button-create">
-                            Create CV
-                            </button>
-                        </a>
+                        <button href="/CV-Template/public/mycv/create_cv" type="button" class="button-create">
+                        Create CV
+                        </button>
                     </div>
                 </div>
             </div>
