@@ -18,10 +18,14 @@ class mycv extends Controller {
     }
 
     public function saveCreateCV() {
-
+        /**
+         * /CV-Template/public/mycv/saveCreateCV
+         */
     }
 
     public function saveEditCV($id) {
-        
+        /**
+         * /CV-Template/public/mycv/saveEDitCV/16253985463784
+         */
     }
 }

@@ -111,6 +111,7 @@ class Login_processing
 
         $_SESSION['logged_in'] = $user['user_name'];
         $_SESSION['username'] = $user['user_name'];
+        $_SESSION['user_id'] = $user['user_id'];
         // $_SESSION['password'] = $user['user_password']; // Storing password in session is not recommended
 
         header('Location: ../home');
@@ -129,7 +130,8 @@ class Login_processing
     public function register()
     {
         if (!$this->validateRegisterInput()) {
-            $this->reLogin('Invalid username or password. Choose a different one');
+            // $this->reLogin('Invalid username or password. Choose a different one');
+            header('Location: login/register?error=Invalid username or password. Choose a different one');
             return;
         }
         
@@ -137,19 +139,19 @@ class Login_processing
         $pswd = $_POST['password'];
         
         $result = $this->userDAO->addUser($uname, $pswd);
-        echo '123132123';
         
         if ($result === false) {
-            $this->reLogin('Registration failed');
+            // $this->reLogin('Registration failed');
+            header('Location: login/register?error=Registration failed');
             return;
         }
 
         // Set session values
-        $_SESSION['logged_in'] = $uname;
-        $_SESSION['username'] = $uname;
-        $_SESSION['password'] = $pswd; // Storing password in session is not recommended
+        // $_SESSION['logged_in'] = $uname;
+        // $_SESSION['username'] = $uname;
+        // $_SESSION['user_id'] = $user['user_id'];
 
-        header('Location: ../home');
+        header('Location: login');
     }
 
 
