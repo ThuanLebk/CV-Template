@@ -14,8 +14,14 @@ class mycv extends Controller {
     }
 
     public function edit_cv($id) {
-        $this->view('header', ['page_title' => 'Edit CV', 'css' => '<link rel=stylesheet href="/CV-Template/public/css/form.css">']);
-        $this->checkLogin();
-        //$this->view('mycv/edit_cv', ['id' => $id]);
+        
+    }
+
+    public function saveCreateCV() {
+
+    }
+
+    public function saveEditCV($id) {
+        
     }
 }
