@@ -3,7 +3,8 @@
 ?>
 <div class="nav-container">
     <div class="cv-name-input">
-        <input type="text" id="cvName" name="cvName" placeholder="CV Name">
+        <input type="text" id="cvName" name="cvName" placeholder="CV Name" required>
+        <div id="errorMessageCVName" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
     </div>
     <div class="features">
         <button type="button" id="saveBtn">Save</button>
@@ -24,7 +25,8 @@
                 <div class="information">
                     <div class="header">
                         <div class="right">
-                            <input type="text" id="nameInput" placeholder="Full Name">
+                            <input type="text" id="nameInput" placeholder="Full Name" required>
+                            <div id="errorMessageName" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
                         </div>
                         <div class="right">
                             <input type="text" id="positionInput" placeholder="Position">
@@ -37,7 +39,8 @@
                                 <p>Birthdate:</p>
                             </div>
                             <div class="right">
-                                <input type="text" placeholder="20/11/2023" name="birthDate" id="birthDate" />
+                                <input type="text" placeholder="20/11/2023" name="birthDate" id="birthDate" required/>
+                                <div id="errorMessageBirthDate" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
                             </div>
                         </div>
 
@@ -46,7 +49,8 @@
                                 <p>Gender:</p>
                             </div>
                             <div class="right">
-                                <input type="text" placeholder="Male/Female" name="gender" id="gender" />
+                                <input type="text" placeholder="Male/Female" name="gender" id="gender" required/>
+                                <div id="errorMessageGender" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
                             </div>
                         </div>
                         <div id="tel-container">
@@ -59,7 +63,8 @@
                                     <p>Phone Number:</p>
                                 </div>
                                 <div class="right">
-                                    <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" />
+                                    <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" required/>
+                                    <div id="errorMessageTel" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +78,8 @@
                                     <p>Email:</p>
                                 </div>
                                 <div class="right">
-                                    <input type="email" placeholder="abc@gmail.com" name="email" id="email" />
+                                    <input type="email" placeholder="abc@gmail.com" name="email" id="email" required/>
+                                    <div id="errorMessageEmail" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +93,8 @@
                                     <p>Address</p>
                                 </div>
                                 <div class="right">
-                                    <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh"></textarea>
+                                    <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh" required></textarea>
+                                    <div id="errorMessageAddress" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
                                 </div>
                             </div>
                         </div>
@@ -104,6 +111,7 @@
                 </div>
 
                 <textarea class="textarea-fullwidth" placeholder="Your job goal, short-term, and long-term objectives" name="" id=""></textarea>
+                
             </div>
 
             <div class="education">

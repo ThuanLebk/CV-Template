@@ -342,14 +342,14 @@ document.onclick = function (e) {
 //Thuan adds event handler for two buttons: save and load
 //on click save button
 saveBtn.onclick = (e) => {
+    checkPersonalInfoValidity();
 	// Define the URL of the server endpoint
 	// Create the data object you want to send
 	// const data = {
 	// 	key1: "value1",
 	// 	key2: "value2",
 	// };
-
-
+    
 	// // Get all input and textarea elements
 	// const inputElements = document.querySelectorAll('input, textarea');
 
@@ -392,6 +392,67 @@ saveBtn.onclick = (e) => {
 	// 		console.error("Error:", error);
 	// 	});
 };
+
+function checkPersonalInfoValidity() {
+    // Check the validity of each personal info input
+    const cvNameValid = document.getElementById('cvName').checkValidity();
+    if (!cvNameValid) {
+        document.getElementById('errorMessageCVName').textContent ='Please fill into this field';
+        document.getElementById('cvName').style.border = '1px solid red';
+        document.getElementById('cvName').onclick = function () {
+            document.getElementById('cvName').style.border = 'none';
+        }
+    }
+    const nameValid = document.getElementById('nameInput').checkValidity();
+    if (!nameValid) {
+        document.getElementById('errorMessageName').textContent ='Please fill into this field';
+        document.getElementById('nameInput').style.border = '1px solid red';
+        document.getElementById('nameInput').onclick = function () {
+            document.getElementById('nameInput').style.border = 'none';
+        }
+    }
+    //const positionValid = document.getElementById('positionInput').checkValidity();
+    const birthDateValid = document.getElementById('birthDate').checkValidity();
+    if (!birthDateValid) {
+        document.getElementById('errorMessageBirthDate').textContent ='Please fill into this field';
+        document.getElementById('birthDate').style.border = '1px solid red';
+        document.getElementById('birthDate').onclick = function () {
+            document.getElementById('birthDate').style.border = 'none';
+        }
+    }
+    const genderValid = document.getElementById('gender').checkValidity();
+    if (!genderValid) {
+        document.getElementById('errorMessageGender').textContent ='Please fill into this field';
+        document.getElementById('gender').style.border = '1px solid red';
+        document.getElementById('gender').onclick = function () {
+            document.getElementById('gender').style.border = 'none';
+        }
+    }
+    const telNumberValid = document.getElementById('telNumber').checkValidity();
+    if (!telNumberValid) {
+        document.getElementById('errorMessageTel').textContent ='Please fill into this field';
+        document.getElementById('telNumber').style.border = '1px solid red';
+        document.getElementById('telNumber').onclick = function () {
+            document.getElementById('telNumber').style.border = 'none';
+        }
+    }
+    const emailValid = document.getElementById('email').checkValidity();
+    if (!emailValid) {
+        document.getElementById('errorMessageEmail').textContent ='Please fill into this field';
+        document.getElementById('email').style.border = '1px solid red';
+        document.getElementById('email').onclick = function () {
+            document.getElementById('email').style.border = 'none';
+        }
+    }
+    const addressValid = document.getElementById('address').checkValidity();
+    if (!addressValid) {
+        document.getElementById('errorMessageAddress').textContent ='Please fill into this field';
+        document.getElementById('address').style.border = '1px solid red';
+        document.getElementById('address').onclick = function () {
+            document.getElementById('address').style.border = 'none';
+        }
+    }
+}
 
 function extractFormData() {
     const data = {
