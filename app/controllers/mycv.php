@@ -2,15 +2,14 @@
 
 class mycv extends Controller {
     public function index() {
-        session_start();
-        $this->checkLogin();
         $this->view('header', ['page_title' => 'Create CV', 'css' => '<link rel=stylesheet href="/CV-Template/public/css/form.css">']);
+        $this->checkLogin();
+        $this->view('mycv/index');
     }
 
     public function create_cv() {
-        session_start();
-        $this->checkLogin();
         $this->view('header', ['page_title' => 'Create CV', 'css' => '<link rel=stylesheet href="/CV-Template/public/css/form.css">']);
+        $this->checkLogin();
         $this->view('mycv/create_cv');
     }
 
