@@ -1,7 +1,6 @@
 <?php
 
 ?>
-
 <div class="nav-container">
     <div class="cv-name-input">
         <input type="text" id="cvName" name="cvName" placeholder="CV Name">
@@ -11,7 +10,7 @@
         <button type="button" id="loadBtn">Load</button>
     </div>
 </div>
-<div class="container">
+<div class="container p-1">
     <div class="container" id="CV">
         <section class="header">
             <div class="personalInfo">
@@ -24,14 +23,18 @@
 
                 <div class="information">
                     <div class="header">
-                        <h1>THUAN LE DUC</h1>
-                        <p>Vi tri ung tuyen</p>
+                        <div class="right">
+                            <input type="text" id="nameInput" placeholder="Full Name">
+                        </div>
+                        <div class="right">
+                            <input type="text" id="positionInput" placeholder="Position">
+                        </div>
                     </div>
 
                     <div class="infoLines">
                         <div class="box">
                             <div class="left">
-                                <p>Ngay sinh:</p>
+                                <p>Birthdate:</p>
                             </div>
                             <div class="right">
                                 <input type="text" placeholder="20/11/2023" name="birthDate" id="birthDate" />
@@ -40,37 +43,52 @@
 
                         <div class="box">
                             <div class="left">
-                                <p>Gioi tinh:</p>
+                                <p>Gender:</p>
                             </div>
                             <div class="right">
-                                <input type="text" placeholder="Nam/Nu" name="gender" id="gender" />
+                                <input type="text" placeholder="Male/Female" name="gender" id="gender" />
                             </div>
                         </div>
-
-                        <div class="box">
-                            <div class="left">
-                                <p>So dien thoai:</p>
-                            </div>
-                            <div class="right">
-                                <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" />
-                            </div>
-                        </div>
-
-                        <div class="box">
-                            <div class="left">
-                                <p>Email:</p>
-                            </div>
-                            <div class="right">
-                                <input type="email" placeholder="abc@gmail.com" name="email" id="email" />
+                        <div id="tel-container">
+                            <div class="box">
+                                <div class="controls">
+                                    <button onclick="addBox('tel-container')">Add</button>
+                                    <button onclick="deleteBox('tel-container')">Delete</button>
+                                </div>
+                                <div class="left">
+                                    <p>Phone Number:</p>
+                                </div>
+                                <div class="right">
+                                    <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" />
+                                </div>
                             </div>
                         </div>
-
-                        <div class="box">
-                            <div class="left">
-                                <p>Dia chi</p>
+                        <div id="email-container">
+                            <div class="box">
+                                <div class="controls">
+                                    <button onclick="addBox('email-container')">Add</button>
+                                    <button onclick="deleteBox('email-container')">Delete</button>
+                                </div>
+                                <div class="left">
+                                    <p>Email:</p>
+                                </div>
+                                <div class="right">
+                                    <input type="email" placeholder="abc@gmail.com" name="email" id="email" />
+                                </div>
                             </div>
-                            <div class="right">
-                                <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh"></textarea>
+                        </div>
+                        <div id="address-container">
+                            <div class="box">
+                                <div class="controls">
+                                    <button onclick="addBox('address-container')">Add</button>
+                                    <button onclick="deleteBox('address-container')">Delete</button>
+                                </div>
+                                <div class="left">
+                                    <p>Address</p>
+                                </div>
+                                <div class="right">
+                                    <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -81,16 +99,16 @@
         <section class="body">
             <div class="objective">
                 <div class="title">
-                    <h4>MỤC TIÊU NGHỀ NGHIỆP</h4>
+                    <h4>CAREER OBJECTIVES</h4>
                     <hr />
                 </div>
 
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Your job goal, short-term, and long-term objectives" name="" id=""></textarea>
             </div>
 
             <div class="education">
                 <div class="title">
-                    <h4>HỌC VẤN</h4>
+                    <h4>EDUCATIONS</h4>
                     <hr />
                 </div>
                 <div class="box-container" id="education-container">
@@ -101,14 +119,14 @@
                             <button onclick="deleteBox('education-container')">Delete</button>
                         </div>
                         <div class="time">
-                            <textarea placeholder="Job objective" name=""></textarea>
+                            <textarea placeholder="From" name="" id=""></textarea>
                             <span>_</span>
-                            <textarea placeholder="Job objective" name=""></textarea>
+                            <textarea placeholder="To" name="" id=""></textarea>
                         </div>
                         <div class="description">
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="School name" name=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Profession/Courses" name=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Process and Achievements" name=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -116,7 +134,7 @@
 
             <div class="experiences">
                 <div class="title">
-                    <h4>KINH NGHIỆM LÀM VIỆC</h4>
+                    <h4>EXPERIENCE</h4>
                     <hr />
                 </div>
                 <div class="box-container" id="experiences-container">
@@ -127,14 +145,14 @@
                             <button onclick="deleteBox('experiences-container')">Delete</button>
                         </div>
                         <div class="time">
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
+                            <textarea placeholder="From" name="" id=""></textarea>
                             <span>_</span>
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
+                            <textarea placeholder="To" name="" id=""></textarea>
                         </div>
                         <div class="description">
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Company name" name="" id=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Your job position" name="" id=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Experience description" name="" id=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -142,7 +160,7 @@
 
             <div class="activities">
                 <div class="title">
-                    <h4>HOẠT ĐỘNG</h4>
+                    <h4>ACTIVITIES</h4>
                     <hr />
                 </div>
 
@@ -154,14 +172,14 @@
                             <button onclick="deleteBox('activities-container')">Delete</button>
                         </div>
                         <div class="time">
-                            <textarea placeholder="Job objective" name=""></textarea>
+                            <textarea placeholder="From" name="" id=""></textarea>
                             <span>_</span>
-                            <textarea placeholder="Job objective" name=""></textarea>
+                            <textarea placeholder="To" name="" id=""></textarea>
                         </div>
                         <div class="description">
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Organization name" name=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Your position" name=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Activity description" name=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -169,7 +187,7 @@
 
             <div class="certificates">
                 <div class="title">
-                    <h4>CHỨNG CHỈ</h4>
+                    <h4>CERTIFICATES</h4>
                     <hr />
                 </div>
 
@@ -181,12 +199,10 @@
                             <button onclick="deleteBox('certificates-container')">Delete</button>
                         </div>
                         <div class="time">
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
-                            <span>_</span>
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
+                            <textarea placeholder="Time" name="" id=""></textarea>
                         </div>
                         <div class="description">
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Certificate name" name="" id=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -194,7 +210,7 @@
 
             <div class="awards">
                 <div class="title">
-                    <h4>DANH HIỆU VÀ GIẢI THƯỞNG</h4>
+                    <h4>HONORS AND AWARDS</h4>
                     <hr />
                 </div>
 
@@ -206,12 +222,10 @@
                             <button onclick="deleteBox('awards-container')">Delete</button>
                         </div>
                         <div class="time">
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
-                            <span>_</span>
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
+                            <textarea placeholder="Time" name="" id=""></textarea>
                         </div>
                         <div class="description">
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Award name" name="" id=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -219,7 +233,7 @@
 
             <div class="skills">
                 <div class="title">
-                    <h4>KỸ NĂNG</h4>
+                    <h4>SKILLS</h4>
                     <hr />
                 </div>
 
@@ -230,13 +244,11 @@
                             <button onclick="addBox('skills-container')">Add</button>
                             <button onclick="deleteBox('skills-container')">Delete</button>
                         </div>
-                        <div class="time">
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
-                            <span>_</span>
-                            <textarea placeholder="Job objective" name="" id=""></textarea>
+                        <div class="skill-name">
+                            <textarea placeholder="Skill name" name="" id=""></textarea>
                         </div>
                         <div class="description">
-                            <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                            <textarea class="textarea-fullwidth" placeholder="Skill description" name="" id=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -244,29 +256,22 @@
 
             <div class="hobbies">
                 <div class="title">
-                    <h4>SỞ THÍCH</h4>
+                    <h4>HOBBIES</h4>
                     <hr />
                 </div>
 
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Your hobbies" name="" id=""></textarea>
             </div>
             <div class="misc">
                 <div class="title">
-                    <h4>THÔNG TIN THÊM</h4>
+                    <h4>ADDITIONAL INFORMATION</h4>
                     <hr />
                 </div>
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
-            </div>
-            <div class="Reference">
-                <div class="title">
-                    <h4>NGƯỜI GIỚI THIỆU</h4>
-                    <hr />
-                </div>
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Additional information (if exist)" name="" id=""></textarea>
             </div>
             <div class="projects">
                 <div class="title">
-                    <h4>DỰ ÁN</h4>
+                    <h4>PROJECTS</h4>
                     <hr />
                 </div>
                 <div class="box-container" id="project-details">
@@ -275,62 +280,73 @@
                             <button onclick="addProject()">Add</button>
                             <button onclick="deleteProject()">Delete</button>
                         </div>
-                        <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+                        <textarea class="textarea-fullwidth" placeholder="Project name" name="" id=""></textarea>
 
                         <div class="box">
                             <div class="time">
-                                <textarea placeholder="Job objective" name="" id=""></textarea>
+                                <textarea placeholder="From" name="" id=""></textarea>
                                 <span>_</span>
-                                <textarea placeholder="Job objective" name="" id=""></textarea>
+                                <textarea placeholder="To" name="" id=""></textarea>
                             </div>
                             <div class="description"></div>
                         </div>
                         <div class="table">
-                            <div class="table-row">
+                            <div class="table-row" id="project-customer">
                                 <div class="header-cell">
-                                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                                    <span> Customer </span>
                                 </div>
                                 <div class="info-cell">
-                                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                                    <textarea class="textarea-fullwidth" placeholder="Name" name="" id=""></textarea>
                                 </div>
                             </div>
-                            <div class="table-row">
+                            <div class="table-row" id="project-description">
                                 <div class="header-cell">
-                                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                                <span> Description </span>
                                 </div>
                                 <div class="info-cell">
-                                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                                    <textarea class="textarea-fullwidth" placeholder="Description" name="" id=""></textarea>
                                 </div>
                             </div>
-                            <div class="table-row">
+                            <div class="table-row" id="project-members">
                                 <div class="header-cell">
-                                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                                    <span> Members </span>
                                 </div>
                                 <div class="info-cell">
-                                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                                    <textarea class="textarea-fullwidth" placeholder="Number of members" name="" id=""></textarea>
                                 </div>
                             </div>
-                            <div class="table-row">
+                            <div class="table-row" id="project-position">
                                 <div class="header-cell">
-                                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                                    <span> Position </span>
                                 </div>
                                 <div class="info-cell">
-                                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                                    <textarea class="textarea-fullwidth" placeholder="Position" name="" id=""></textarea>
                                 </div>
                             </div>
-                            <div class="table-row">
+                            <div class="table-row" id="project-responsibilities">
                                 <div class="header-cell">
-                                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                                    <span> Responsibilities </span>
                                 </div>
                                 <div class="info-cell">
-                                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                                    <textarea class="textarea-fullwidth" placeholder="Description" name="" id=""></textarea>
+                                </div>
+                            </div>
+                            <div class="table-row" id="project-technologies">
+                                <div class="header-cell">
+                                    <span> Technologies </span>
+                                </div>
+                                <div class="info-cell">
+                                    <textarea class="textarea-fullwidth" placeholder="Description" name="" id=""></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
         </section>
     </div>
 </div>
+<br>
+<br>
 <script src="/CV-Template/public/scripts/index.js"></script>

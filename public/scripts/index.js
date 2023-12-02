@@ -67,40 +67,133 @@ function addBox(containerId) {
 	newBox.className = "box";
 
 	// Similar structure as your initial box
-
-	if (containerId === "certificates-container" || containerId === "awards-container") {
-		newBox.innerHTML = `
+    if (containerId === "tel-container") {
+        newBox.innerHTML = `
             <div class="controls">
-                <button class="add-button" onclick="addBox('${containerId}')">Add</button>
-                <button class="delete-button" onclick="deleteBox('${containerId}')">Delete</button>
+                <button onclick="addBox('tel-container')">Add</button>
+                <button onclick="deleteBox('tel-container')">Delete</button>
             </div>
-            <div class="time">
-                <textarea placeholder="Job objective" name=""></textarea>
-                <span>_</span>
-                <textarea placeholder="Job objective" name=""></textarea>
+            <div class="left">
             </div>
-            <div class="description">
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+            <div class="right">
+                <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" />
             </div>
         `;
-	} else {
-		newBox.innerHTML = `
+    } else if (containerId === "email-container") {
+        newBox.innerHTML = `
             <div class="controls">
-                <button class="add-button" onclick="addBox('${containerId}')">Add</button>
-                <button class="delete-button" onclick="deleteBox('${containerId}')">Delete</button>
+                <button onclick="addBox('email-container')">Add</button>
+                <button onclick="deleteBox('email-container')">Delete</button>
             </div>
-            <div class="time">
-                <textarea placeholder="Job objective" name=""></textarea>
-                <span>_</span>
-                <textarea placeholder="Job objective" name=""></textarea>
+            <div class="left">
             </div>
-            <div class="description">
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
-                <textarea class="textarea-fullwidth" placeholder="Job objective" name=""></textarea>
+            <div class="right">
+                <input type="email" placeholder="abc@gmail.com" name="email" id="email" />
             </div>
         `;
-	}
+    } else if (containerId === "address-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('address-container')">Add</button>
+                <button onclick="deleteBox('address-container')">Delete</button>
+            </div>
+            <div class="left">
+            </div>
+            <div class="right">
+                <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh"></textarea>
+            </div>
+        `;
+    } else if (containerId === "education-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('education-container')">Add</button>
+                <button onclick="deleteBox('education-container')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="From" name="" id=""></textarea>
+                <span>_</span>
+                <textarea placeholder="To" name="" id=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="School name" name=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Profession/Courses" name=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Process and Achievements" name=""></textarea>
+            </div>
+        `;
+    } else if (containerId === "experiences-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('experiences-container')">Add</button>
+                <button onclick="deleteBox('experiences-container')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="From" name="" id=""></textarea>
+                <span>_</span>
+                <textarea placeholder="To" name="" id=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Company name" name="" id=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Your job position" name="" id=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Experience description" name="" id=""></textarea>
+            </div>
+        `;
+    } else if (containerId === "activities-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('activities-container')">Add</button>
+                <button onclick="deleteBox('activities-container')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="From" name="" id=""></textarea>
+                <span>_</span>
+                <textarea placeholder="To" name="" id=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Organization name" name=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Your position" name=""></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Activity description" name=""></textarea>
+            </div>
+        `;
+    } else if (containerId === "certificates-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('certificates-container')">Add</button>
+                <button onclick="deleteBox('certificates-container')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="Time" name="" id=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Certificate name" name="" id=""></textarea>
+            </div>
+        `;
+    } else if (containerId === "awards-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('awards-container')">Add</button>
+                <button onclick="deleteBox('awards-container')">Delete</button>
+            </div>
+            <div class="time">
+                <textarea placeholder="Time" name="" id=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Award name" name="" id=""></textarea>
+            </div>
+        `;
+    } else if (containerId === "skills-container") {
+        newBox.innerHTML = `
+            <div class="controls">
+                <button onclick="addBox('skills-container')">Add</button>
+                <button onclick="deleteBox('skills-container')">Delete</button>
+            </div>
+            <div class="skill-name">
+                <textarea placeholder="Skill name" name="" id=""></textarea>
+            </div>
+            <div class="description">
+                <textarea class="textarea-fullwidth" placeholder="Skill description" name="" id=""></textarea>
+            </div>
+        `;
+    }
 
 	newBox.onclick = function () {
 		const controls = this.querySelector(".controls");
@@ -133,7 +226,7 @@ const project = document.querySelector(".project");
 
 project.onclick = function () {
 	const controls = this.querySelector(".controls");
-	controls.style.display = controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
+	controls.style.display = "block"; //controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
 };
 
 function addProject() {
@@ -146,62 +239,70 @@ function addProject() {
             <button onclick="addProject()">Add</button>
             <button onclick="deleteProject()">Delete</button>
         </div>
-        <textarea class="textarea-fullwidth" placeholder="Job objective" name="" id=""></textarea>
+        <textarea class="textarea-fullwidth" placeholder="Project name" name="" id=""></textarea>
 
         <div class="box">
             <div class="time">
-                <textarea placeholder="Job objective" name="" id=""></textarea>
+                <textarea placeholder="From" name="" id=""></textarea>
                 <span>_</span>
-                <textarea placeholder="Job objective" name="" id=""></textarea>
+                <textarea placeholder="To" name="" id=""></textarea>
             </div>
             <div class="description"></div>
         </div>
         <div class="table">
-            <div class="table-row">
+            <div class="table-row" id="project-customer">
                 <div class="header-cell">
-                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                    <span> Customer </span>
                 </div>
                 <div class="info-cell">
-                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                    <textarea class="textarea-fullwidth" placeholder="Name" name="" id=""></textarea>
                 </div>
             </div>
-            <div class="table-row">
+            <div class="table-row" id="project-description">
                 <div class="header-cell">
-                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                <span> Description </span>
                 </div>
                 <div class="info-cell">
-                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                    <textarea class="textarea-fullwidth" placeholder="Description" name="" id=""></textarea>
                 </div>
             </div>
-            <div class="table-row">
+            <div class="table-row" id="project-members">
                 <div class="header-cell">
-                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                    <span> Members </span>
                 </div>
                 <div class="info-cell">
-                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                    <textarea class="textarea-fullwidth" placeholder="Number of members" name="" id=""></textarea>
                 </div>
             </div>
-            <div class="table-row">
+            <div class="table-row" id="project-position">
                 <div class="header-cell">
-                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                    <span> Position </span>
                 </div>
                 <div class="info-cell">
-                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                    <textarea class="textarea-fullwidth" placeholder="Position" name="" id=""></textarea>
                 </div>
             </div>
-            <div class="table-row">
+            <div class="table-row" id="project-responsibilities">
                 <div class="header-cell">
-                    <textarea placeholder="Khach hang" name="" id=""></textarea>
+                    <span> Responsibilities </span>
                 </div>
                 <div class="info-cell">
-                    <textarea class="textarea-fullwidth" placeholder="Ten khach hang" name="" id=""></textarea>
+                    <textarea class="textarea-fullwidth" placeholder="Description" name="" id=""></textarea>
+                </div>
+            </div>
+            <div class="table-row" id="project-technologies">
+                <div class="header-cell">
+                    <span> Technologies </span>
+                </div>
+                <div class="info-cell">
+                    <textarea class="textarea-fullwidth" placeholder="Description" name="" id=""></textarea>
                 </div>
             </div>
         </div>
     `;
 	newBox.onclick = function () {
 		const controls = this.querySelector(".controls");
-		controls.style.display = controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
+		controls.style.display = "block"; //controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
 	};
 
 	boxContainer.appendChild(newBox);
@@ -262,37 +363,39 @@ saveBtn.onclick = (e) => {
 
 	// 	}
 	// });
-	const data = extractData();
+	const data = extractFormData();
 	console.log(JSON.stringify(data));
+
 	// Use fetch API to make the POST request
-	fetch("test_server.php", {
-		method: "POST", // Specify the method
-		headers: {
-			// Specify any needed headers. This is how you tell the server you're sending JSON.
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(data), // Convert the JavaScript object to a JSON string
-	})
-		.then((response) => {
-			// The server responds with the data in JSON format, parse it to create a JavaScript object
-			if (!response.ok) {
-				// If the response has HTTP status code which is not successful, throw an error
-				throw new Error("Network response was not ok " + response.statusText);
-			}
-			return response.text(); // parses JSON response into native JavaScript objects
-		})
-		.then((data) => {
-			// Handle the response data
-			console.log("Success post:", data);
-		})
-		.catch((error) => {
-			// Handle any errors here
-			console.error("Error:", error);
-		});
+	// fetch("test_server.php", {
+	// 	method: "POST", // Specify the method
+	// 	headers: {
+	// 		// Specify any needed headers. This is how you tell the server you're sending JSON.
+	// 		"Content-Type": "application/json",
+	// 	},
+	// 	body: JSON.stringify(data), // Convert the JavaScript object to a JSON string
+	// })
+	// 	.then((response) => {
+	// 		// The server responds with the data in JSON format, parse it to create a JavaScript object
+	// 		if (!response.ok) {
+	// 			// If the response has HTTP status code which is not successful, throw an error
+	// 			throw new Error("Network response was not ok " + response.statusText);
+	// 		}
+	// 		return response.text(); // parses JSON response into native JavaScript objects
+	// 	})
+	// 	.then((data) => {
+	// 		// Handle the response data
+	// 		console.log("Success post:", data);
+	// 	})
+	// 	.catch((error) => {
+	// 		// Handle any errors here
+	// 		console.error("Error:", error);
+	// 	});
 };
 
-function extractData() {
+function extractFormData() {
     const data = {
+        cvName: document.getElementById('cvName').value,
         personalInfo: extractPersonalInfo(),
         objective: document.querySelector('.objective textarea').value,
         education: extractSectionData('education-container'),
@@ -300,22 +403,20 @@ function extractData() {
         activities: extractSectionData('activities-container'),
         certificates: extractSectionData('certificates-container'),
         awards: extractSectionData('awards-container'),
-        skills: extractSectionData('skills-container'),
+        skills: extractSkillsData(),
         hobbies: document.querySelector('.hobbies textarea').value,
         misc: document.querySelector('.misc textarea').value,
-        reference: document.querySelector('.Reference textarea').value,
         projects: extractProjectData(),
     };
 
-    console.log(data);
     // Perform further actions with the extracted data as needed
-	return data;
+    return data;
 }
 
 function extractPersonalInfo() {
     const personalInfo = {
-        name: document.querySelector('.header h1').textContent,
-        position: document.querySelector('.header p').textContent,
+        name: document.getElementById('nameInput').value,
+        position: document.getElementById('positionInput').value,
         birthDate: document.getElementById('birthDate').value,
         gender: document.getElementById('gender').value,
         telNumber: document.getElementById('telNumber').value,
@@ -346,26 +447,54 @@ function extractSectionData(containerId) {
     return sectionData;
 }
 
+function extractSkillsData() {
+    const container = document.getElementById('skills-container');
+    const boxes = container.querySelectorAll('.box');
+    const skillsData = [];
+
+    boxes.forEach(box => {
+        const skillName = box.querySelector('.skill-name textarea').value;
+        const description = box.querySelector('.description textarea').value;
+
+        const skillEntry = {
+            name: skillName,
+            description: description,
+        };
+
+        skillsData.push(skillEntry);
+    });
+
+    return skillsData;
+}
+
 function extractProjectData() {
     const projectContainer = document.getElementById('project-details');
     const projectBoxes = projectContainer.querySelectorAll('.project');
     const projects = [];
 
     projectBoxes.forEach(projectBox => {
-        const projectTitle = projectBox.querySelector('.textarea-fullwidth').value;
+        const projectTitle = projectBox.children[0].value;
         const timeFields = projectBox.querySelectorAll('.time textarea');
-        const headerCells = projectBox.querySelectorAll('.header-cell textarea');
-        const infoCells = projectBox.querySelectorAll('.info-cell textarea');
-
+        
         const projectData = {
             title: projectTitle,
             time: Array.from(timeFields).map(field => field.value),
-            tableData: [],
+            tableData: {},
         };
 
-        headerCells.forEach((header, index) => {
-            const info = infoCells[index].value;
-            projectData.tableData.push({ [header.value]: info });
+        // Iterate over each table row and extract data
+        const rows = projectBox.querySelectorAll('.table-row');
+        rows.forEach(row => {
+            const headerCell = row.querySelector('.header-cell');
+            const infoCell = row.querySelector('.info-cell textarea');
+            
+            // Use the content of the header cell as the key in tableData
+            const header = headerCell.innerText.trim();
+            // Use the content of the info cell as the value in tableData
+            const info = infoCell.value;
+            
+            // Assign key-value pair to tableData
+            projectData.tableData[header] = info;
         });
 
         projects.push(projectData);
@@ -407,131 +536,138 @@ loadBtn.onclick = (e) => {
 		});
 };
 
-// Function to populate the form with loaded data
 function populateForm(data) {
-    // Personal Information
-    document.querySelector('.header h1').textContent = data.personalInfo.name;
-    document.querySelector('.header p').textContent = data.personalInfo.position;
+    // Populate personal information
+    document.getElementById('cvName').value = data.cvName;
+    document.getElementById('nameInput').value = data.personalInfo.name;
+    document.getElementById('positionInput').value = data.personalInfo.position;
     document.getElementById('birthDate').value = data.personalInfo.birthDate;
     document.getElementById('gender').value = data.personalInfo.gender;
     document.getElementById('telNumber').value = data.personalInfo.telNumber;
     document.getElementById('email').value = data.personalInfo.email;
     document.getElementById('address').value = data.personalInfo.address;
 
-    // Objective
+    // Populate objective
     document.querySelector('.objective textarea').value = data.objective;
 
-    // Other sections - call respective functions to populate data
-    populateSectionData('education-container', data.education);
-    populateSectionData('experiences-container', data.experiences);
-    populateSectionData('activities-container', data.activities);
-    populateSectionData('certificates-container', data.certificates);
-    populateSectionData('awards-container', data.awards);
-    populateSectionData('skills-container', data.skills);
+    // Populate sections (education, experiences, activities, certificates, awards, skills)
+    populateSection('education-container', data.education);
+    populateSection('experiences-container', data.experiences);
+    populateSection('activities-container', data.activities);
+    populateSection('certificates-container', data.certificates);
+    populateSection('awards-container', data.awards);
+    populateSkills('skills-container', data.skills);
 
-    // Hobbies
+    // Populate hobbies and misc
     document.querySelector('.hobbies textarea').value = data.hobbies;
-
-    // Misc
     document.querySelector('.misc textarea').value = data.misc;
 
-    // Reference
-    document.querySelector('.Reference textarea').value = data.reference;
-
-    // Projects
-    populateProjectData(data.projects);
+    // Populate projects
+    populateProjects('project-details', data.projects);
 }
 
-function populateSectionData(containerId, data) {
+function populateSection(containerId, sectionData) {
+    const container = document.getElementById(containerId);
+    
+    // Check if sectionData is defined and is an array
+    if (sectionData && Array.isArray(sectionData)) {
+        sectionData.forEach(entry => {
+            const newBox = document.createElement("div");
+            newBox.className = "box";
+
+            // Your existing code to populate newBox based on entry
+
+            container.appendChild(newBox);
+        });
+    } else {
+        console.error(`Invalid or missing sectionData for containerId: ${containerId}`);
+    }
+}
+
+function populateSkills(containerId, skillsData) {
     const container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear existing content
 
-    data.forEach(entry => {
-        const box = document.createElement('div');
-        box.classList.add('box');
+    skillsData.forEach(skillEntry => {
+        addBox(containerId); // Add a new box
+        const boxes = container.querySelectorAll('.box');
+        const newBox = boxes[boxes.length - 1];
 
-        // Populate time fields
-        const time = document.createElement('div');
-        time.classList.add('time');
-        entry.time.forEach(timeValue => {
-            const timeTextarea = document.createElement('textarea');
-            timeTextarea.placeholder = 'Job objective';
-            timeTextarea.value = timeValue;
-            time.appendChild(timeTextarea);
-        });
-        box.appendChild(time);
-
-        // Populate description fields
-        const description = document.createElement('div');
-        description.classList.add('description');
-        entry.description.forEach(descriptionValue => {
-            const descriptionTextarea = document.createElement('textarea');
-            descriptionTextarea.classList.add('textarea-fullwidth');
-            descriptionTextarea.placeholder = 'Job objective';
-            descriptionTextarea.value = descriptionValue;
-            description.appendChild(descriptionTextarea);
-        });
-        box.appendChild(description);
-
-        container.appendChild(box);
+        newBox.querySelector('.skill-name textarea').value = skillEntry.name;
+        newBox.querySelector('.description textarea').value = skillEntry.description;
     });
 }
 
-function populateProjectData(data) {
-    const projectContainer = document.getElementById('project-details');
-    projectContainer.innerHTML = ''; // Clear existing content
+function populateProjects(containerId, projects) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // Clear existing content
 
-    data.forEach(projectData => {
-        const project = document.createElement('div');
-        project.classList.add('project');
+    projects.forEach(projectData => {
+        addProject(); // Add a new project box
+        const projectBoxes = container.querySelectorAll('.project');
+        const newProjectBox = projectBoxes[projectBoxes.length - 1];
 
-        // Populate project title
-        const projectTitleTextarea = document.createElement('textarea');
-        projectTitleTextarea.classList.add('textarea-fullwidth');
-        projectTitleTextarea.placeholder = 'Job objective';
-        projectTitleTextarea.value = projectData.title;
-        project.appendChild(projectTitleTextarea);
+        newProjectBox.children[0].value = projectData.title;
 
-        // Populate time fields
-        const time = document.createElement('div');
-        time.classList.add('time');
-        projectData.time.forEach(timeValue => {
-            const timeTextarea = document.createElement('textarea');
-            timeTextarea.placeholder = 'Job objective';
-            timeTextarea.value = timeValue;
-            time.appendChild(timeTextarea);
+        const timeFields = newProjectBox.querySelectorAll('.time textarea');
+        projectData.time.forEach((value, index) => {
+            timeFields[index].value = value;
         });
-        project.appendChild(time);
 
-        // Populate description field
-        const description = document.createElement('div');
-        description.classList.add('description');
-        project.appendChild(description);
+        // Iterate over each table row and populate data
+        const rows = newProjectBox.querySelectorAll('.table-row');
+        rows.forEach(row => {
+            const headerCell = row.querySelector('.header-cell');
+            const infoCell = row.querySelector('.info-cell textarea');
+            const header = headerCell.innerText.trim();
 
-        // Populate table data
-        const table = document.createElement('div');
-        table.classList.add('table');
-        projectData.tableData.forEach(tableRowData => {
-            const tableRow = document.createElement('div');
-            tableRow.classList.add('table-row');
-
-            for (const [header, info] of Object.entries(tableRowData)) {
-                const headerCellTextarea = document.createElement('textarea');
-                headerCellTextarea.placeholder = 'Khach hang';
-                headerCellTextarea.value = header;
-                tableRow.appendChild(headerCellTextarea);
-
-                const infoCellTextarea = document.createElement('textarea');
-                infoCellTextarea.classList.add('textarea-fullwidth');
-                infoCellTextarea.placeholder = 'Ten khach hang';
-                infoCellTextarea.value = info;
-                tableRow.appendChild(infoCellTextarea);
+            if (projectData.tableData.hasOwnProperty(header)) {
+                infoCell.value = projectData.tableData[header];
             }
-
-            table.appendChild(tableRow);
         });
-        project.appendChild(table);
-
-        projectContainer.appendChild(project);
     });
 }
+// Mock data in JSON format
+const mockData = {
+    cvName: "John Doe's CV",
+    personalInfo: {
+        name: "John Doe",
+        position: "Software Developer",
+        birthDate: "1990-01-01",
+        gender: "Male",
+        telNumber: "1234567890",
+        email: "john.doe@example.com",
+        address: "123 Main St, Cityville",
+    },
+    objective: "Seeking a challenging position in software development.",
+    education: [
+        { time: ["2010", "2014"], description: ["BSc in Computer Science", "University of Tech"] },
+        // Add more education entries if needed
+    ],
+    experiences: [
+        { time: ["2015", "2018"], description: ["Software Engineer", "Tech Company"] },
+        // Add more experience entries if needed
+    ],
+    // Add more sections with mock data as needed
+    // ...
+    skills: [
+        { name: "JavaScript", description: "Frontend and backend development" },
+        // Add more skill entries if needed
+    ],
+    hobbies: "Reading, hiking, coding",
+    misc: "Additional information about John Doe",
+    projects: [
+        {
+            title: "Project ABC",
+            time: ["2018", "2020"],
+            tableData: {
+                "Customer": "ABC Corp",
+                "Description": "Developed a web application for internal use",
+                // Add more table data entries if needed
+            },
+        },
+        // Add more project entries if needed
+    ],
+};
+
+populateForm(mockData);
