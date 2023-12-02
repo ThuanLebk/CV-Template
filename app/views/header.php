@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $data['page_title']; ?></title>
     <link rel="icon" href="./assets/CV-icon.png" type="image/x-icon" />    
-    <link rel="stylesheet" href="./css/style-home.css">
+    <link rel="stylesheet" href="/CV-Template/public/css/style-home.css">
     
     <?php if (isset($data['css'])) echo $data['css'] ?>
 
@@ -33,7 +33,7 @@
         <div id="header">
             <ul id="nav">
                 <li><a href="http://localhost/CV-Template/public/">Home</a></li>
-                <li><a href="http://localhost/CV-Template/public/create_cv">Create new CV</a></li>
+                <li><a href="http://localhost/CV-Template/public/mycv">My CV</a></li>
                 <?php
                     if (isset($_SESSION["logged_in"])) {
                         echo '<li><a href="http://localhost/CV-Template/public/logout">Logout</a></li>';
@@ -43,7 +43,7 @@
                         <li><a href='http://localhost/CV-Template/public/register'>Register</a></li>";
                     }
                 ?>
-                <li>
+                <!-- <li>
                     <a href="">
                         More
                         <i class="nav-arrow-down ti-angle-down"></i>
@@ -53,13 +53,13 @@
                         <li><a href="#">Extras</a></li>
                         <li><a href="#">Media</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <!-- end nav -->
-            <div class="search-btn">
+            <!-- <div class="search-btn">
                 <div class="search-icon">
                     <i class='bx bx-search-alt-2'></i>
                 </div>
-            </div>
+            </div> -->
         </div>
     
