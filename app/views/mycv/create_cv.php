@@ -18,7 +18,7 @@
                 <div class="profileImg">
                     <input id="defaultInput" type="file" name="file" id="file" hidden />
                     <button id="alternativeInput" type="button">
-                        <img src="./assets/profile.png" alt="Profile image" id="avatar" />
+                        <img src="/CV-Template/public/assets/profile.png" alt="Profile image" id="avatar" />
                     </button>
                 </div>
 
@@ -333,4 +333,4 @@
         </section>
     </div>
 </div>
-<!-- <script src="./scripts/index.js"></script> -->
+<script src="/CV-Template/public/scripts/index.js"></script>

@@ -57,7 +57,7 @@ boxes.forEach((box) => {
 
 	box.onclick = function () {
 		const controls = this.querySelector(".controls");
-		if (controls !== null) controls.style.display = controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
+		if (controls !== null) controls.style.display = 'block'; //= controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
 	};
 });
 
@@ -104,7 +104,7 @@ function addBox(containerId) {
 
 	newBox.onclick = function () {
 		const controls = this.querySelector(".controls");
-		controls.style.display = controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
+		controls.style.display = 'block';//controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
 	};
 
 	boxContainer.appendChild(newBox);
