@@ -14,13 +14,20 @@ class UserCVDAO
      * Create a new CV 
      * @param string $cvName CV Name
      * @param string $cvJSONData CV JSON data of form
-     * @return true|false
+     * @return int|false ID of newly inserted row
      */
-    public function createCV($cvName, $cvJSONData) {
-        $sql = "INSERT INTO user_cv (cv_name, cv_data) VALUES (?, ?)";
+    public function createCV($user_id, $cvName, $cvJSONData) {
+        $sql = "INSERT INTO user_cv (user_id, cv_name, cv_data) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ss", $cvName, $cvJSONData);
-        return $stmt->execute();
+        $stmt->bind_param("iss", $user_id, $cvName, $cvJSONData);
+    
+        if ($stmt->execute()) {
+            // Return the ID of the last inserted row
+            return $this->conn->insert_id;
+        } else {
+            // Return some error code or false if insertion failed
+            return false;
+        }
     }
 
     /**

@@ -342,7 +342,9 @@ document.onclick = function (e) {
 //Thuan adds event handler for two buttons: save and load
 //on click save button
 saveBtn.onclick = (e) => {
-    checkPersonalInfoValidity();
+    if (!checkPersonalInfoValidity()) {
+        return;
+    }
 	// Define the URL of the server endpoint
 	// Create the data object you want to send
 	// const data = {
@@ -367,41 +369,43 @@ saveBtn.onclick = (e) => {
 	console.log(JSON.stringify(data));
 
 	// Use fetch API to make the POST request
-	// fetch("test_server.php", {
-	// 	method: "POST", // Specify the method
-	// 	headers: {
-	// 		// Specify any needed headers. This is how you tell the server you're sending JSON.
-	// 		"Content-Type": "application/json",
-	// 	},
-	// 	body: JSON.stringify(data), // Convert the JavaScript object to a JSON string
-	// })
-	// 	.then((response) => {
-	// 		// The server responds with the data in JSON format, parse it to create a JavaScript object
-	// 		if (!response.ok) {
-	// 			// If the response has HTTP status code which is not successful, throw an error
-	// 			throw new Error("Network response was not ok " + response.statusText);
-	// 		}
-	// 		return response.text(); // parses JSON response into native JavaScript objects
-	// 	})
-	// 	.then((data) => {
-	// 		// Handle the response data
-	// 		console.log("Success post:", data);
-	// 	})
-	// 	.catch((error) => {
-	// 		// Handle any errors here
-	// 		console.error("Error:", error);
-	// 	});
+	fetch("/CV-Template/public/mycv/saveCreateCV", {
+		method: "POST", // Specify the method
+		headers: {
+			// Specify any needed headers. This is how you tell the server you're sending JSON.
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data), // Convert the JavaScript object to a JSON string
+	})
+		.then((response) => {
+			// The server responds with the data in JSON format, parse it to create a JavaScript object
+			if (!response.ok) {
+				// If the response has HTTP status code which is not successful, throw an error
+				throw new Error("Network response was not ok " + response.statusText);
+			}
+			return response.text(); // parses JSON response into native JavaScript objects
+		})
+		.then((data) => {
+			// Handle the response data
+			console.log("Success post:", JSON.parse(data));
+		})
+		.catch((error) => {
+			// Handle any errors here
+			console.error("Error:", error);
+		});
 };
 
 function checkPersonalInfoValidity() {
     // Check the validity of each personal info input
     const cvNameValid = document.getElementById('cvName').checkValidity();
+    let isValid = true;
     if (!cvNameValid) {
         document.getElementById('errorMessageCVName').textContent ='Please fill into this field';
         document.getElementById('cvName').style.border = '1px solid red';
         document.getElementById('cvName').onclick = function () {
             document.getElementById('cvName').style.border = 'none';
         }
+        isValid = false;
     }
     const nameValid = document.getElementById('nameInput').checkValidity();
     if (!nameValid) {
@@ -410,6 +414,7 @@ function checkPersonalInfoValidity() {
         document.getElementById('nameInput').onclick = function () {
             document.getElementById('nameInput').style.border = 'none';
         }
+        isValid = false;
     }
     //const positionValid = document.getElementById('positionInput').checkValidity();
     const birthDateValid = document.getElementById('birthDate').checkValidity();
@@ -419,6 +424,7 @@ function checkPersonalInfoValidity() {
         document.getElementById('birthDate').onclick = function () {
             document.getElementById('birthDate').style.border = 'none';
         }
+        isValid = false;
     }
     const genderValid = document.getElementById('gender').checkValidity();
     if (!genderValid) {
@@ -427,6 +433,7 @@ function checkPersonalInfoValidity() {
         document.getElementById('gender').onclick = function () {
             document.getElementById('gender').style.border = 'none';
         }
+        isValid = false;
     }
     const telNumberValid = document.getElementById('telNumber').checkValidity();
     if (!telNumberValid) {
@@ -435,6 +442,7 @@ function checkPersonalInfoValidity() {
         document.getElementById('telNumber').onclick = function () {
             document.getElementById('telNumber').style.border = 'none';
         }
+        isValid = false;
     }
     const emailValid = document.getElementById('email').checkValidity();
     if (!emailValid) {
@@ -443,6 +451,7 @@ function checkPersonalInfoValidity() {
         document.getElementById('email').onclick = function () {
             document.getElementById('email').style.border = 'none';
         }
+        isValid = false;
     }
     const addressValid = document.getElementById('address').checkValidity();
     if (!addressValid) {
@@ -451,7 +460,10 @@ function checkPersonalInfoValidity() {
         document.getElementById('address').onclick = function () {
             document.getElementById('address').style.border = 'none';
         }
+        isValid = false;
     }
+
+    return isValid;
 }
 
 function extractFormData() {
