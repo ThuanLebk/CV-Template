@@ -51,9 +51,9 @@ class UserDAO
     public function addUser($uname, $pswd) {
         // Hash the password
         $hashedPswd = password_hash($pswd, PASSWORD_DEFAULT);
-
+        
         // Prepare the SQL statement
-        $stmt = $this->conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $stmt = $this->conn->prepare("INSERT INTO user_profiles (user_name, user_password) VALUES (?, ?)");
 
         if (!$stmt) {
             // Handle prepare error

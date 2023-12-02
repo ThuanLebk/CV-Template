@@ -15,7 +15,7 @@ if (isset($_SESSION['login_username'])) {
 ?>
 
 <div class="wrapper">
-    <form action="/CV-Template/public/login_processing" method='POST'>
+    <form action="/CV-Template/public/login/processRegister" onsubmit="return validateForm()" method="POST">
         <h1>Register</h1>
         <?php
         if (isset($_GET['error'])) {
@@ -24,19 +24,19 @@ if (isset($_SESSION['login_username'])) {
         ?>
         <div class="input-box">
             <?php
-            echo "<input type='text' name='username' placeholder='Username' value='$save_username' required>"
+            echo "<input id='username' type='text' name='username' placeholder='Username' value='$save_username' required>"
             ?>
             <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
             <?php
-            echo "<input type='password' name='password' placeholder='Password' required>"
+            echo "<input id='password' type='password' name='password' placeholder='Password' required>"
             ?>
             <i class='bx bxs-lock-alt'></i>
         </div>
         <div class="input-box">
             <?php
-            echo "<input type='password' name='confirm_password' placeholder='Confirm password' required>"
+            echo "<input id='confirmPassword' type='password' name='confirm_password' placeholder='Confirm password' required>"
             ?>
             <i class='bx bxs-lock-alt'></i>
         </div>
@@ -45,7 +45,8 @@ if (isset($_SESSION['login_username'])) {
 
     </form>
 </div>
-
 </body>
 
+<script src="/CV-Template/public/scripts/register_form_validate.js"></script>
 </html>
+

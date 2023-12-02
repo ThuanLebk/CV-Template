@@ -132,12 +132,13 @@ class Login_processing
             $this->reLogin('Invalid username or password. Choose a different one');
             return;
         }
-
+        
         $uname = $_POST['username'];
         $pswd = $_POST['password'];
-
+        
         $result = $this->userDAO->addUser($uname, $pswd);
-
+        echo '123132123';
+        
         if ($result === false) {
             $this->reLogin('Registration failed');
             return;

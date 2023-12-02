@@ -30,4 +30,20 @@ class login extends Controller
         //Call login
         $login_handler->login();
     }
+    public function processRegister()
+    {
+        if (!($_SERVER['REQUEST_METHOD'] == 'POST'))
+            return;
+
+        // Header
+        $this->view('header', ['page_title' => 'Register', 'css' => '<link rel="stylesheet" href="/CV-Template/public/css/style-login-form.css">']);
+
+        //Include model
+        require_once '../app/models/login_processing.php';
+
+        //Create model instance
+        $login_handler = new Login_processing;
+        //Call register
+        $login_handler->register();
+    }
 }

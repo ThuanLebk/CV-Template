@@ -5,7 +5,7 @@ class Connection {
     private $conn;
     private $servername = "localhost";
     private $username = "root";
-    private $password = "root";
+    private $password = "";
     private $dbname = "CV_STORAGE";
 
     private function __construct() {
