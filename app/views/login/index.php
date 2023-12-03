@@ -47,7 +47,7 @@ if (isset($_SESSION['login_username'])) {
         <button class="btn" type="submit">Login</button>
 
         <div class="register-link">
-            <p>Don't have an account? <a href="#">Register</a> </p>
+            <p>Don't have an account? <a href="/CV-Template/public/login/register">Register</a> </p>
         </div>
     </form>
 </div>
