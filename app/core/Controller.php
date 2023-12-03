@@ -12,7 +12,7 @@ class Controller {
 
     public function checkLogin() {
         if (!isset($_SESSION['logged_in'])) {
-            header('Location: login');
+            header('Location: /CV-Template/public/login');
             exit();
         } 
     }

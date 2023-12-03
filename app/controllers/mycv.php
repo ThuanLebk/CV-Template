@@ -27,10 +27,11 @@ class mycv extends Controller {
 
         include_once '../app/models/cv_processing.php';
         $cv_processing = new CV_processing;
-        $cv = $cv_processing->getCVByID($id);
+
+        $cv = $cv_processing->getCVByID($id ? $id : -1);
 
         //CV Not Found
-        if (!$cv) {
+        if (!$id || !$cv) {
             $cv['INVALID_CV'] = 1;
         } else {
             $cv_image_path = $cv['cv_image'];
@@ -69,7 +70,7 @@ class mycv extends Controller {
         session_start();
         $this->checkLogin();
 
-        if (!$_SERVER['REQUEST_METHOD'] == 'POST')
+        if (!$_SERVER['REQUEST_METHOD'] == 'POST' || !$id || $id < 0)
             return;
 
         include_once '../app/models/cv_processing.php';
@@ -93,7 +94,7 @@ class mycv extends Controller {
         session_start();
         $this->checkLogin();
 
-        if (!$_SERVER['REQUEST_METHOD'] == 'POST')
+        if (!$_SERVER['REQUEST_METHOD'] == 'POST' || !$id || $id < 0)
             return;
 
         include_once '../app/models/cv_processing.php';
@@ -116,7 +117,7 @@ class mycv extends Controller {
         session_start();
         $this->checkLogin();
 
-        if (!$_SERVER['REQUEST_METHOD'] == 'POST' || $cv_id < 0 || $cv_id == null)
+        if (!$_SERVER['REQUEST_METHOD'] == 'POST' || $cv_id == null || $cv_id < 0)
             return;
 
         include_once '../app/models/cv_processing.php';

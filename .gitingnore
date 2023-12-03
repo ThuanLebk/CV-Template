@@ -7,4 +7,4 @@
 *.code-workspace
 tmpfiles/*
 !tmpfiles/SQL.sql
-/app/models/uploads/*
+/app/models/uploads/

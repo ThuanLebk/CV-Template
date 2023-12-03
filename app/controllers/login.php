@@ -5,11 +5,20 @@ class login extends Controller
     public function index()
     {
         $this->view('header', ['page_title' => 'Login', 'css' => '<link rel="stylesheet" href="/CV-Template/public/css/style-login-form.css">']);
+        if (isset($_SESSION['logged_in'])) {
+            header('Location: /CV-Template/public/home');
+            exit();
+        }
         $this->view('login/index');
     }
 
-    public function register() {
+    public function register()
+    {
         $this->view('header', ['page_title' => 'Register', 'css' => '<link rel="stylesheet" href="/CV-Template/public/css/style-login-form.css">']);
+        if (isset($_SESSION['logged_in'])) {
+            header('Location: /CV-Template/public/home');
+            exit();
+        }
         $this->view('login/register');
     }
 
@@ -17,6 +26,11 @@ class login extends Controller
     {
         if (!($_SERVER['REQUEST_METHOD'] == 'POST'))
             return;
+
+        if (isset($_SESSION['logged_in'])) {
+            header('Location: /CV-Template/public/home');
+            exit();
+        }
 
         // Header
         $this->view('header', ['page_title' => 'Login', 'css' => '<link rel="stylesheet" href="/CV-Template/public/css/style-login-form.css">']);
@@ -32,8 +46,15 @@ class login extends Controller
     }
     public function processRegister()
     {
-        if (!($_SERVER['REQUEST_METHOD'] == 'POST'))
-            return;
+        if (!($_SERVER['REQUEST_METHOD'] == 'POST')) {
+            header('Location: /CV-Template/public/home');
+            exit();
+        }
+
+        if (isset($_SESSION['logged_in'])) {
+            header('Location: /CV-Template/public/home');
+            exit();
+        }
 
         // Header
         $this->view('header', ['page_title' => 'Register', 'css' => '<link rel="stylesheet" href="/CV-Template/public/css/style-login-form.css">']);
