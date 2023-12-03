@@ -43,6 +43,12 @@ class CV_processing {
         return $this->userCVDao->getUserCVs($user_id);
     }
 
+
+    /**
+     * Get CV by ID
+     * @param int $cv_id CV ID
+     * @return array|false
+     */
     public function getCVByID($cv_id) {
         return $this->userCVDao->getCVByID($cv_id);
     }
