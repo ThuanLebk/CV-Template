@@ -103,7 +103,7 @@ class Login_processing
         $user = $this->userDAO->getUser($uname);
 
         if ($user === false || !password_verify($pswd, $user['user_password'])) {
-            $this->reLogin('username is: ' . $uname);
+            $this->reLogin('Username or password is incorrect');
             return;
         }
 
