@@ -8,7 +8,7 @@
     </div>
     <div class="features">
         <button type="button" id="saveBtn">Save</button>
-        <button type="button" id="loadBtn">Load</button>
+        <button type="button" id="loadBtn" hidden>Load</button>
     </div>
 </div>
 <div class="container p-1">

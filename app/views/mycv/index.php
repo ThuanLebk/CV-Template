@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-lg-auto ms-auto">
                         <button href="/CV-Template/public/mycv/create_cv" type="button" class="button-create">
-                        Create CV
+                            Create CV
                         </button>
                     </div>
                 </div>
@@ -18,29 +18,44 @@
         <thead class="table-success">
             <div style="color: white !important;">
                 <tr>
-                <th scope="col">CV ID</th>
-                <th scope="col">CV Name</th>
-                <th scope="col">Last modified</th>
-                <th scope="col">Action</th>
+                    <th scope="col">CV ID</th>
+                    <th scope="col">CV Name</th>
+                    <th scope="col">Last modified</th>
+                    <th scope="col">Action</th>
                 </tr>
             </div>
         </thead>
         <tbody id="table_content" class="table-group-divider">
-            <tr>
-                <td>cho</td>
-                <td>Tin</td>
-                <td>dien</td>
-                <td>
-                    <button type="button" class="button-edit">
-                    Edit
-                    </button>
-                    <button type="button" class="button-remove">
-                    Remove
-                    </button>
-                </td>
-            </tr>
+            <?php
+
+            if (count($data) ==  0) {
+                echo '<tr>';
+                echo '<td>No CV record yet</td>';
+                echo '</tr>';
+            } else {
+                foreach ($data as $index => $value) {
+                    //Raw string JSON data
+                    $json = $value['cv_data'];
+                    //Decoded JSON as PHP array
+                    $json_data = json_decode($json, true);
+
+                    echo '<tr id="row_' . $value['cv_id'] . '">';
+                    echo "<td>$index</td>";
+                    echo '<td>' . $json_data['cvName'] . '</td>';
+                    echo '<td>' . $value['updated_at'] . '</td>';
+                    echo '<td>';
+                    printf('<button type="button" class="button-edit" onclick="editCV(%s)">Edit</button>', $value['cv_id']);
+                    printf('<button type="button" class="button-remove" onclick="deleteCV(%s)">Remove</button>', $value['cv_id']);
+                    echo '</td>';
+                    echo '</tr>';
+                }
+            }
+
+            ?>
         </tbody>
     </table>
+
+    <?php print_r(json_decode($data[0]['cv_data'], true)['education']) ?>
 </div>
 
 <script src="/CV-Template/public/scripts/mycv_index.js"></script>

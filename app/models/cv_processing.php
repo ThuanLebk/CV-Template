@@ -42,4 +42,12 @@ class CV_processing {
     public function getCVList($user_id) {
         return $this->userCVDao->getUserCVs($user_id);
     }
+
+    public function getCVByID($cv_id) {
+        return $this->userCVDao->getCVByID($cv_id);
+    }
+
+    public function deleteCV($cv_id) {
+        return $this->userCVDao->deleteCV($cv_id);
+    }
 }

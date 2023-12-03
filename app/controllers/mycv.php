@@ -25,7 +25,16 @@ class mycv extends Controller {
         $this->view('header', ['page_title' => 'Create CV', 'css' => '<link rel=stylesheet href="/CV-Template/public/css/form.css">']);
         $this->checkLogin();
 
-        $this->view('mycv/edit_cv');
+        include_once '../app/models/cv_processing.php';
+        $cv_processing = new CV_processing;
+        $cv = $cv_processing->getCVByID($id);
+
+        //CV Not Found
+        if (!$cv) {
+            $cv['INVALID_CV'] = 1;
+        }
+        
+        $this->view('mycv/edit_cv', $cv);
     }
 
     public function saveCreateCV() {
@@ -61,6 +70,28 @@ class mycv extends Controller {
 
         $cv_processing = new CV_processing;
 
-        return $cv_processing->saveEditCV($id);
+        $status = $cv_processing->saveEditCV($id);
+        $ret_msg = ['Code' => $status ? 200 : -1 ,'Status' => $status ? "OK" : "FAILED", 'cvID' => $status ? $status : '-1'];
+
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($ret_msg);
+    }
+
+    public function deleteCV($id) {
+        session_start();
+        $this->checkLogin();
+
+        if (!$_SERVER['REQUEST_METHOD'] == 'POST')
+            return;
+
+        include_once '../app/models/cv_processing.php';
+
+        $cv_processing = new CV_processing;
+
+        $status = $cv_processing->deleteCV($id);
+        $ret_msg = ['Code' => $status ? 200 : -1 ,'Status' => $status ? "OK" : "FAILED", 'cvID' => $status ? $status : '-1'];
+
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($ret_msg);
     }
 }
