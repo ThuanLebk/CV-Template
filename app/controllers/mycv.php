@@ -19,7 +19,6 @@ class mycv extends Controller {
         $this->checkLogin();
 
         $this->view('mycv/create_cv');
-
     }
 
     public function edit_cv($id) {
