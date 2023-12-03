@@ -18,7 +18,7 @@ class CV_processing {
     public function saveNewCV() {
         $json = file_get_contents('php://input');
         $cv_name = json_decode(file_get_contents('php://input'), true)['cvName'];
-        $user_id = 1;
+        $user_id = $_SESSION['user_id'];
 
         return $this->userCVDao->createCV($user_id, $cv_name, $json);
     }
