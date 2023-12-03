@@ -30,9 +30,9 @@ class Connection {
         return $this->conn;
     }
     
-    // Prevent cloning of the instance
-    private function __clone() { }
+    // // Prevent cloning of the instance
+    // private function __clone() { }
 
-    // Prevent unserialization of the instance
-    private function __wakeup() { }
+    // // Prevent unserialization of the instance
+    // private function __wakeup() { }
 }

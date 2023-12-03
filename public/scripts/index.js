@@ -77,7 +77,8 @@ function addBox(containerId) {
             <div class="left">
             </div>
             <div class="right">
-                <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" />
+                <input type="tel" placeholder="0909888777" name="telNumber" id="telNumber" required/>
+                <div id="errorMessageTel" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
             </div>
         `;
 	} else if (containerId === "email-container") {
@@ -89,7 +90,8 @@ function addBox(containerId) {
             <div class="left">
             </div>
             <div class="right">
-                <input type="email" placeholder="abc@gmail.com" name="email" id="email" />
+                <input type="email" placeholder="abc@gmail.com" name="email" id="email" required/>
+                <div id="errorMessageEmail" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
             </div>
         `;
 	} else if (containerId === "address-container") {
@@ -101,7 +103,8 @@ function addBox(containerId) {
             <div class="left">
             </div>
             <div class="right">
-                <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh"></textarea>
+                <textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh" required></textarea>
+                <div id="errorMessageAddress" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>
             </div>
         `;
 	} else if (containerId === "education-container") {
@@ -211,7 +214,6 @@ function deleteBox(containerId) {
 	// Check if there is at least one box left before removing
 	if (boxes.length > 1) {
 		boxContainer.removeChild(boxes[boxes.length - 1]);
-		updateButtons(containerId);
 	}
 }
 
@@ -223,12 +225,13 @@ function deleteBox(containerId) {
 //     // Hide buttons if no boxes are present
 //     controls.style.display = boxes.length > 0 ? 'block' : 'none';
 // }
-const project = document.querySelector(".project");
-
-project.onclick = function () {
-	const controls = this.querySelector(".controls");
-	controls.style.display = "block"; //controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
-};
+const projects = document.querySelectorAll(".project");
+projects.forEach((project) => {
+    project.onclick = function () {
+        const controls = this.querySelector(".controls");
+        controls.style.display = "block"; //controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
+    };
+});
 
 function addProject() {
 	var boxContainer = document.getElementById("project-details");
@@ -318,7 +321,6 @@ function deleteProject() {
 	// Check if there is at least one box left before removing
 	if (boxes.length > 1) {
 		boxContainer.removeChild(boxes[boxes.length - 1]);
-		updateButtons(containerId);
 	}
 }
 
@@ -396,6 +398,7 @@ if (saveBtn != null)
 				console.error("Error:", error);
 			});
 	};
+
 if (updateBtn != null)
 	updateBtn.onclick = (e) => {
 		if (!checkPersonalInfoValidity()) {
@@ -475,38 +478,51 @@ function checkPersonalInfoValidity() {
 		};
 		isValid = false;
 	}
-	const telNumberValid = document.getElementById("telNumber").checkValidity();
-	if (!telNumberValid) {
-		document.getElementById("errorMessageTel").textContent = "Please fill into this field";
-		document.getElementById("telNumber").style.border = "1px solid red";
-		document.getElementById("telNumber").onclick = function () {
-			document.getElementById("telNumber").style.border = "none";
-		};
-		isValid = false;
-	}
-	const emailValid = document.getElementById("email").checkValidity();
-	if (!emailValid) {
-		document.getElementById("errorMessageEmail").textContent = "Please fill into this field";
-		document.getElementById("email").style.border = "1px solid red";
-		document.getElementById("email").onclick = function () {
-			document.getElementById("email").style.border = "none";
-		};
-		isValid = false;
-	}
-	const address = document.getElementById("address");
-	if (!address.checkValidity() || address.value.trim().length === 0) {
-		document.getElementById("errorMessageAddress").textContent = "Please fill into this field";
-		document.getElementById("address").style.border = "1px solid red";
-		document.getElementById("address").onclick = function () {
-			document.getElementById("address").style.border = "none";
-		};
-
-        if (address.value.trim().length === 0) {
-            address.value = "";
+    const telNumberBoxes = document.querySelectorAll('#tel-container .box');
+    telNumberBoxes.forEach((telNumberBox) => {
+        const telNumber = telNumberBox.querySelector('input');
+        const telNumberValid = telNumber.checkValidity();
+        if (!telNumberValid) {
+            telNumberBox.querySelector("#errorMessageTel").textContent = "Please fill into this field";
+            telNumber.style.border = "1px solid red";
+            telNumber.onclick = function () {
+                telNumber.style.border = "none";
+            };
+            isValid = false;
         }
+    });
 
-		isValid = false;
-	}
+    const emailBoxes = document.querySelectorAll('#email-container .box');
+    emailBoxes.forEach((emailBox) => {
+        const email = emailBox.querySelector('input');
+        const emailValid = email.checkValidity();
+        if (!emailValid) {
+            emailBox.querySelector("#errorMessageEmail").textContent = "Please fill into this field";
+            email.style.border = "1px solid red";
+            email.onclick = function () {
+                email.style.border = "none";
+            };
+            isValid = false;
+        }
+    });
+
+    const addressBoxes = document.querySelectorAll('#address-container .box');
+    addressBoxes.forEach((addressBox) => {
+	    const address = addressBox.querySelector("#address");
+        if (!address.checkValidity() || address.value.trim().length === 0) {
+            addressBox.querySelector("#errorMessageAddress").textContent = "Please fill into this field";
+            address.style.border = "1px solid red";
+            address.onclick = function () {
+                address.style.border = "none";
+            };
+
+            if (address.value.trim().length === 0) {
+                address.value = "";
+            }
+
+            isValid = false;
+        }
+    });
 
 	return isValid;
 }
@@ -537,12 +553,25 @@ function extractPersonalInfo() {
 		position: document.getElementById("positionInput").value,
 		birthDate: document.getElementById("birthDate").value,
 		gender: document.getElementById("gender").value,
-		telNumber: document.getElementById("telNumber").value,
-		email: document.getElementById("email").value,
-		address: document.getElementById("address").value,
+		telNumber: extractMultiPersonalData('tel-container'),
+		email: extractMultiPersonalData('email-container'),
+		address: extractMultiPersonalData('address-container'),
 	};
 
 	return personalInfo;
+}
+
+function extractMultiPersonalData(containerId) {
+	const container = document.getElementById(containerId);
+	const boxes = container.querySelectorAll(".box");
+	const multiPersonalData = [];
+
+	boxes.forEach((box) => {
+		const input = box.querySelector("input, textarea").value;
+		multiPersonalData.push(input);
+	});
+
+	return multiPersonalData;
 }
 
 function extractSectionData(containerId) {
@@ -591,7 +620,7 @@ function extractProjectData() {
 	const projects = [];
 
 	projectBoxes.forEach((projectBox) => {
-		const projectTitle = projectBox.children[0].value;
+		const projectTitle = projectBox.querySelectorAll("textarea")[0].value;
 		const timeFields = projectBox.querySelectorAll(".time textarea");
 
 		const projectData = {
@@ -620,171 +649,3 @@ function extractProjectData() {
 
 	return projects;
 }
-if (loadBtn != null)
-	loadBtn.onclick = (e) => {
-		// Define the URL of the server endpoint
-		const userId = 1;
-		const cvId = 14;
-		const url = `test_server.php?user_id=${userId}&cv_id=${cvId}`;
-
-		// Use fetch API to make the GET request
-		fetch(url)
-			.then((response) => {
-				if (!response.ok) {
-					// If the response has an HTTP status code which is not successful, throw an error
-					throw new Error("Network response was not ok: " + response.statusText);
-				}
-				return response.text(); // parses JSON response into native JavaScript objects
-			})
-			.then((data) => {
-				// Handle the response data
-				const loadedData = JSON.parse(data);
-
-				// Populate the form with the loaded data
-				populateForm(loadedData);
-
-				// Handle the response data
-				console.log("Success:", JSON.parse(data));
-				console.log("Success:", JSON.parse(data).key);
-			})
-			.catch((error) => {
-				// Handle any errors here
-				console.error("Error:", error);
-			});
-	};
-
-function populateForm(data) {
-	// Populate personal information
-	document.getElementById("cvName").value = data.cvName;
-	document.getElementById("nameInput").value = data.personalInfo.name;
-	document.getElementById("positionInput").value = data.personalInfo.position;
-	document.getElementById("birthDate").value = data.personalInfo.birthDate;
-	document.getElementById("gender").value = data.personalInfo.gender;
-	document.getElementById("telNumber").value = data.personalInfo.telNumber;
-	document.getElementById("email").value = data.personalInfo.email;
-	document.getElementById("address").value = data.personalInfo.address;
-
-	// Populate objective
-	document.querySelector(".objective textarea").value = data.objective;
-
-	// Populate sections (education, experiences, activities, certificates, awards, skills)
-	populateSection("education-container", data.education);
-	populateSection("experiences-container", data.experiences);
-	populateSection("activities-container", data.activities);
-	populateSection("certificates-container", data.certificates);
-	populateSection("awards-container", data.awards);
-	populateSkills("skills-container", data.skills);
-
-	// Populate hobbies and misc
-	document.querySelector(".hobbies textarea").value = data.hobbies;
-	document.querySelector(".misc textarea").value = data.misc;
-
-	// Populate projects
-	populateProjects("project-details", data.projects);
-}
-
-function populateSection(containerId, sectionData) {
-	const container = document.getElementById(containerId);
-
-	// Check if sectionData is defined and is an array
-	if (sectionData && Array.isArray(sectionData)) {
-		sectionData.forEach((entry) => {
-			const newBox = document.createElement("div");
-			newBox.className = "box";
-
-			// Your existing code to populate newBox based on entry
-
-			container.appendChild(newBox);
-		});
-	} else {
-		console.error(`Invalid or missing sectionData for containerId: ${containerId}`);
-	}
-}
-
-function populateSkills(containerId, skillsData) {
-	const container = document.getElementById(containerId);
-	container.innerHTML = ""; // Clear existing content
-
-	skillsData.forEach((skillEntry) => {
-		addBox(containerId); // Add a new box
-		const boxes = container.querySelectorAll(".box");
-		const newBox = boxes[boxes.length - 1];
-
-		newBox.querySelector(".skill-name textarea").value = skillEntry.name;
-		newBox.querySelector(".description textarea").value = skillEntry.description;
-	});
-}
-
-function populateProjects(containerId, projects) {
-	const container = document.getElementById(containerId);
-	container.innerHTML = ""; // Clear existing content
-
-	projects.forEach((projectData) => {
-		addProject(); // Add a new project box
-		const projectBoxes = container.querySelectorAll(".project");
-		const newProjectBox = projectBoxes[projectBoxes.length - 1];
-
-		newProjectBox.children[0].value = projectData.title;
-
-		const timeFields = newProjectBox.querySelectorAll(".time textarea");
-		projectData.time.forEach((value, index) => {
-			timeFields[index].value = value;
-		});
-
-		// Iterate over each table row and populate data
-		const rows = newProjectBox.querySelectorAll(".table-row");
-		rows.forEach((row) => {
-			const headerCell = row.querySelector(".header-cell");
-			const infoCell = row.querySelector(".info-cell textarea");
-			const header = headerCell.innerText.trim();
-
-			if (projectData.tableData.hasOwnProperty(header)) {
-				infoCell.value = projectData.tableData[header];
-			}
-		});
-	});
-}
-// Mock data in JSON format
-const mockData = {
-	cvName: "John Doe's CV",
-	personalInfo: {
-		name: "John Doe",
-		position: "Software Developer",
-		birthDate: "1990-01-01",
-		gender: "Male",
-		telNumber: "1234567890",
-		email: "john.doe@example.com",
-		address: "123 Main St, Cityville",
-	},
-	objective: "Seeking a challenging position in software development.",
-	education: [
-		{ time: ["2010", "2014"], description: ["BSc in Computer Science", "University of Tech"] },
-		// Add more education entries if needed
-	],
-	experiences: [
-		{ time: ["2015", "2018"], description: ["Software Engineer", "Tech Company"] },
-		// Add more experience entries if needed
-	],
-	// Add more sections with mock data as needed
-	// ...
-	skills: [
-		{ name: "JavaScript", description: "Frontend and backend development" },
-		// Add more skill entries if needed
-	],
-	hobbies: "Reading, hiking, coding",
-	misc: "Additional information about John Doe",
-	projects: [
-		{
-			title: "Project ABC",
-			time: ["2018", "2020"],
-			tableData: {
-				Customer: "ABC Corp",
-				Description: "Developed a web application for internal use",
-				// Add more table data entries if needed
-			},
-		},
-		// Add more project entries if needed
-	],
-};
-
-//populateForm(mockData);
