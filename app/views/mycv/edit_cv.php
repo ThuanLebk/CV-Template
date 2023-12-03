@@ -33,9 +33,9 @@ $projects = $cv_data['projects'];
         <section class="header">
             <div class="personalInfo">
                 <div class="profileImg">
-                    <input id="defaultInput" type="file" name="file" id="file" hidden />
+                    <input id="defaultInput" type="file" accept=".png, .jpg, .jpeg" name="file" id="file" hidden />
                     <button id="alternativeInput" type="button">
-                        <img src="/CV-Template/public/assets/profile.png" alt="Profile image" id="avatar" />
+                        <img src="<?php echo (isset($data['image']) ? $data['image'] : '/CV-Template/public/assets/profile.png'); ?>" alt="Profile image" id="avatar" />
                     </button>
                 </div>
 
@@ -72,7 +72,7 @@ $projects = $cv_data['projects'];
                             </div>
                         </div>
                         <div id="tel-container">
-                        <?php
+                            <?php
                             foreach ($personalInfo['telNumber'] as $value) {
                                 echo '<div class="box">';
                                 echo '<div class="controls">';
@@ -88,7 +88,7 @@ $projects = $cv_data['projects'];
                                 echo '</div>';
                                 echo '</div>';
                             }
-                        ?>
+                            ?>
                         </div>
                         <div id="email-container">
                             <?php
@@ -121,7 +121,7 @@ $projects = $cv_data['projects'];
                                 if ($value === $personalInfo['address'][0]) echo '<p>Address:</p>';
                                 echo '</div>';
                                 echo '<div class="right">';
-                                echo '<textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh" required>'. $value .'</textarea>';
+                                echo '<textarea class="textarea-fullwidth" name="address" id="address" placeholder="117-119 Lý Chính Thắng, Võ Thị Sáu, Quận 3, Thành phố Hồ Chí Minh" required>' . $value . '</textarea>';
                                 echo '<div id="errorMessageAddress" style="padding: 0.2rem; color: red; font-size: 0.75rem;"></div>';
                                 echo '</div>';
                                 echo '</div>';
@@ -329,14 +329,14 @@ $projects = $cv_data['projects'];
                     <hr />
                 </div>
 
-                <textarea class="textarea-fullwidth" placeholder="Your hobbies" name="" id=""><?= $cv_data['hobbies']?></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Your hobbies" name="" id=""><?= $cv_data['hobbies'] ?></textarea>
             </div>
             <div class="misc">
                 <div class="title">
                     <h4>ADDITIONAL INFORMATION</h4>
                     <hr />
                 </div>
-                <textarea class="textarea-fullwidth" placeholder="Additional information (if exist)" name="" id=""><?= $cv_data['misc']?></textarea>
+                <textarea class="textarea-fullwidth" placeholder="Additional information (if exist)" name="" id=""><?= $cv_data['misc'] ?></textarea>
             </div>
             <div class="projects">
                 <div class="title">
@@ -352,7 +352,7 @@ $projects = $cv_data['projects'];
                         echo '<button onclick="deleteProject()">Delete</button>';
                         echo '</div>';
 
-                        echo '<textarea class="textarea-fullwidth" placeholder="Project name" name="" id="">' . $value['title'] .'</textarea>';
+                        echo '<textarea class="textarea-fullwidth" placeholder="Project name" name="" id="">' . $value['title'] . '</textarea>';
                         echo '<div class="box">';
                         echo '<div class="time">';
                         echo '<textarea placeholder="From" name="" id="">' . $value['time'][0] . '</textarea>';

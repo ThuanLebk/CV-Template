@@ -227,10 +227,10 @@ function deleteBox(containerId) {
 // }
 const projects = document.querySelectorAll(".project");
 projects.forEach((project) => {
-    project.onclick = function () {
-        const controls = this.querySelector(".controls");
-        controls.style.display = "block"; //controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
-    };
+	project.onclick = function () {
+		const controls = this.querySelector(".controls");
+		controls.style.display = "block"; //controls.style.display === "none" || controls.style.display === "" ? "block" : "none";
+	};
 });
 
 function addProject() {
@@ -391,7 +391,32 @@ if (saveBtn != null)
 			})
 			.then((data) => {
 				// Handle the response data
-				console.log("Success post:", JSON.parse(data));
+				console.log("Success post:", );
+				const json = JSON.parse(data);
+				const id = json.cvID;
+				const updateImage_URL = `/CV-Template/public/mycv/uploadImage/${id}`;
+
+				const fileInput = document.getElementById("defaultInput");
+				const imageName = fileInput.src;
+
+				if (fileInput.files.length > 0 && imageName != "/CV-Template/public/assets/profile.png") {
+					const formData = new FormData();
+					formData.append("file", fileInput.files[0]);
+
+					fetch(updateImage_URL, {
+						method: "POST",
+						body: formData,
+					})
+						.then((response) => response.text())
+						.then((data) => {
+							console.log("Success post:", JSON.parse(data));
+						})
+						.catch((error) => {
+							console.error("Error:", error);
+						});
+				}
+
+				window.location.href = '/CV-Template/public/mycv/edit_cv/' + id;
 			})
 			.catch((error) => {
 				// Handle any errors here
@@ -406,13 +431,12 @@ if (updateBtn != null)
 		}
 
 		const data = extractFormData();
-        const id = document.querySelector('#cv_id').value;
-        const url = `/CV-Template/public/mycv/saveEditCV/${id}`;
-		console.log(data);
-        console.log('URL: ', url);
+		const id = document.querySelector("#cv_id").value;
+		const updateJSON_URL = `/CV-Template/public/mycv/saveEditCV/${id}`;
+		const updateImage_URL = `/CV-Template/public/mycv/uploadImage/${id}`;
 
 		// Use fetch API to make the POST request
-		fetch(url, {
+		fetch(updateJSON_URL, {
 			method: "POST", // Specify the method
 			headers: {
 				// Specify any needed headers. This is how you tell the server you're sending JSON.
@@ -431,11 +455,33 @@ if (updateBtn != null)
 			.then((data) => {
 				// Handle the response data
 				console.log("Success post:", JSON.parse(data));
+
+				const fileInput = document.getElementById("defaultInput");
+				const imageName = fileInput.src;
+
+				if (fileInput.files.length > 0 && imageName != "/CV-Template/public/assets/profile.png") {
+					const formData = new FormData();
+					formData.append("file", fileInput.files[0]);
+
+					fetch(updateImage_URL, {
+						method: "POST",
+						body: formData,
+					})
+						.then((response) => response.text())
+						.then((data) => {
+							console.log("Success post:", JSON.parse(data));
+						})
+						.catch((error) => {
+							console.error("Error:", error);
+						});
+				}
 			})
 			.catch((error) => {
 				// Handle any errors here
 				console.error("Error:", error);
 			});
+
+		//////////////////////////
 	};
 
 function checkPersonalInfoValidity() {
@@ -478,51 +524,51 @@ function checkPersonalInfoValidity() {
 		};
 		isValid = false;
 	}
-    const telNumberBoxes = document.querySelectorAll('#tel-container .box');
-    telNumberBoxes.forEach((telNumberBox) => {
-        const telNumber = telNumberBox.querySelector('input');
-        const telNumberValid = telNumber.checkValidity();
-        if (!telNumberValid) {
-            telNumberBox.querySelector("#errorMessageTel").textContent = "Please fill into this field";
-            telNumber.style.border = "1px solid red";
-            telNumber.onclick = function () {
-                telNumber.style.border = "none";
-            };
-            isValid = false;
-        }
-    });
+	const telNumberBoxes = document.querySelectorAll("#tel-container .box");
+	telNumberBoxes.forEach((telNumberBox) => {
+		const telNumber = telNumberBox.querySelector("input");
+		const telNumberValid = telNumber.checkValidity();
+		if (!telNumberValid) {
+			telNumberBox.querySelector("#errorMessageTel").textContent = "Please fill into this field";
+			telNumber.style.border = "1px solid red";
+			telNumber.onclick = function () {
+				telNumber.style.border = "none";
+			};
+			isValid = false;
+		}
+	});
 
-    const emailBoxes = document.querySelectorAll('#email-container .box');
-    emailBoxes.forEach((emailBox) => {
-        const email = emailBox.querySelector('input');
-        const emailValid = email.checkValidity();
-        if (!emailValid) {
-            emailBox.querySelector("#errorMessageEmail").textContent = "Please fill into this field";
-            email.style.border = "1px solid red";
-            email.onclick = function () {
-                email.style.border = "none";
-            };
-            isValid = false;
-        }
-    });
+	const emailBoxes = document.querySelectorAll("#email-container .box");
+	emailBoxes.forEach((emailBox) => {
+		const email = emailBox.querySelector("input");
+		const emailValid = email.checkValidity();
+		if (!emailValid) {
+			emailBox.querySelector("#errorMessageEmail").textContent = "Please fill into this field";
+			email.style.border = "1px solid red";
+			email.onclick = function () {
+				email.style.border = "none";
+			};
+			isValid = false;
+		}
+	});
 
-    const addressBoxes = document.querySelectorAll('#address-container .box');
-    addressBoxes.forEach((addressBox) => {
-	    const address = addressBox.querySelector("#address");
-        if (!address.checkValidity() || address.value.trim().length === 0) {
-            addressBox.querySelector("#errorMessageAddress").textContent = "Please fill into this field";
-            address.style.border = "1px solid red";
-            address.onclick = function () {
-                address.style.border = "none";
-            };
+	const addressBoxes = document.querySelectorAll("#address-container .box");
+	addressBoxes.forEach((addressBox) => {
+		const address = addressBox.querySelector("#address");
+		if (!address.checkValidity() || address.value.trim().length === 0) {
+			addressBox.querySelector("#errorMessageAddress").textContent = "Please fill into this field";
+			address.style.border = "1px solid red";
+			address.onclick = function () {
+				address.style.border = "none";
+			};
 
-            if (address.value.trim().length === 0) {
-                address.value = "";
-            }
+			if (address.value.trim().length === 0) {
+				address.value = "";
+			}
 
-            isValid = false;
-        }
-    });
+			isValid = false;
+		}
+	});
 
 	return isValid;
 }
@@ -553,9 +599,9 @@ function extractPersonalInfo() {
 		position: document.getElementById("positionInput").value,
 		birthDate: document.getElementById("birthDate").value,
 		gender: document.getElementById("gender").value,
-		telNumber: extractMultiPersonalData('tel-container'),
-		email: extractMultiPersonalData('email-container'),
-		address: extractMultiPersonalData('address-container'),
+		telNumber: extractMultiPersonalData("tel-container"),
+		email: extractMultiPersonalData("email-container"),
+		address: extractMultiPersonalData("address-container"),
 	};
 
 	return personalInfo;

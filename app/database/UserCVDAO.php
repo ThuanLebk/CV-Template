@@ -132,4 +132,17 @@ class UserCVDAO
         $stmt->bind_param("i", $cv_id);
         return $stmt->execute();
     }
+
+    /**
+     * Update image of an existing database
+     * @param int $cv_id
+     * @return bool
+     */
+    public function updateCVImage($cv_id, $image_path) {
+        $sql = "UPDATE user_cv SET cv_image = ? WHERE cv_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('si', $image_path, $cv_id);
+
+        return $stmt->execute();
+    }
 }
