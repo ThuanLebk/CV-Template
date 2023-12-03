@@ -34,8 +34,10 @@ class mycv extends Controller {
             $cv['INVALID_CV'] = 1;
         } else {
             $cv_image_path = $cv['cv_image'];
-            $base64Image = $cv_processing->getCVImage($cv_image_path);
-            $cv['image'] = $base64Image;
+            if ($cv_image_path) {
+                $base64Image = $cv_processing->getCVImage($cv_image_path);
+                $cv['image'] = $base64Image;
+            }
         }
         
         $this->view('mycv/edit_cv', $cv);

@@ -410,13 +410,14 @@ if (saveBtn != null)
 						.then((response) => response.text())
 						.then((data) => {
 							console.log("Success post:", JSON.parse(data));
+							window.location.href = '/CV-Template/public/mycv/edit_cv/' + id;
 						})
 						.catch((error) => {
 							console.error("Error:", error);
 						});
 				}
+				else window.location.href = '/CV-Template/public/mycv/edit_cv/' + id;
 
-				window.location.href = '/CV-Template/public/mycv/edit_cv/' + id;
 			})
 			.catch((error) => {
 				// Handle any errors here
