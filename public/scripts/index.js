@@ -1,3 +1,15 @@
+const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+console.log(document.querySelectorAll('.toast'));
+const toastList = toastElList.map(function (toastEl) {
+  return new bootstrap.Toast(toastEl, "delay", 5000);
+})
+console.log(toastList);
+const myToastEl = document.getElementById('successfulToast');
+console.log(myToastEl);
+const myToast = bootstrap.Toast.getInstance(myToastEl);
+const myToastEl2 = document.getElementById('failedToast');
+const myToast2 = bootstrap.Toast.getInstance(myToastEl2);
+
 const alternativeInput = document.querySelector("#alternativeInput");
 const defaultInput = document.querySelector("#defaultInput");
 const avatar = document.querySelector("#avatar");
@@ -410,10 +422,12 @@ if (saveBtn != null)
 						.then((response) => response.text())
 						.then((data) => {
 							console.log("Success post:", JSON.parse(data));
+							myToast.show();
 							window.location.href = '/CV-Template/public/mycv/edit_cv/' + id;
 						})
 						.catch((error) => {
 							console.error("Error:", error);
+							myToast.show();
 						});
 				}
 				else window.location.href = '/CV-Template/public/mycv/edit_cv/' + id;
@@ -471,15 +485,19 @@ if (updateBtn != null)
 						.then((response) => response.text())
 						.then((data) => {
 							console.log("Success post:", JSON.parse(data));
+							myToast.show();
 						})
 						.catch((error) => {
 							console.error("Error:", error);
 						});
+					
 				}
+				else myToast.show();
 			})
 			.catch((error) => {
 				// Handle any errors here
 				console.error("Error:", error);
+				myToast2.show();
 			});
 
 		//////////////////////////

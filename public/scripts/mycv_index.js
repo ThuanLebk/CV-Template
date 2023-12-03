@@ -1,10 +1,16 @@
+const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+const toastList = toastElList.map(function (toastEl) {
+  return new bootstrap.Toast(toastEl, "delay", 5000);
+})
+console.log('mycv_index.js');
+const myToastEl = document.getElementById('successfulToast');
+const myToast = bootstrap.Toast.getInstance(myToastEl);
+const myToastEl2 = document.getElementById('failedToast');
+const myToast2 = bootstrap.Toast.getInstance(myToastEl2);
+
 document.querySelector('.button-create').onclick = function() {
     window.location.href = '/CV-Template/public/mycv/create_cv';
 }
-
-// document.querySelector('.button-edit').onclick = function() {
-//     window.location.href = '/CV-Template/public/mycv/edit_cv';
-// }
 
 function editCV(id) {
     if (id === '' || id < 0)
@@ -39,9 +45,11 @@ function deleteCV(id) {
         console.log("Success post:", JSON.parse(data));
         const row = document.querySelector('#row_' + id);
         row.remove();
+        myToast.show();
     })
     .catch((error) => {
         // Handle any errors here
         console.error("Error:", error);
+        myToast2.show();
     });
 }

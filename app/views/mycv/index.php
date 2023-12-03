@@ -44,8 +44,8 @@
                     echo '<td>' . $json_data['cvName'] . '</td>';
                     echo '<td>' . $value['updated_at'] . '</td>';
                     echo '<td>';
-                    printf('<button type="button" class="button-edit" onclick="editCV(%s)">Edit</button>', $value['cv_id']);
-                    printf('<button type="button" class="button-remove" onclick="deleteCV(%s)">Remove</button>', $value['cv_id']);
+                    printf('<button type="button" class="button-edit mx-1" onclick="editCV(%s)">Edit</button>', $value['cv_id']);
+                    printf('<button type="button" class="button-remove mx-1" onclick="deleteCV(%s)">Remove</button>', $value['cv_id']);
                     echo '</td>';
                     echo '</tr>';
                 }
@@ -54,6 +54,28 @@
             ?>
         </tbody>
     </table>
+</div>
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="successfulToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <i class="fas fa-check fa-lg" style="color: #1bee6c;"></i>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Remove successfully.
+    </div>
+  </div>
+</div>
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="failedToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <i class="fas fa-times fa-lg" style="color: #ff2929;"></i>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Remove failed.
+    </div>
+  </div>
 </div>
 
 <script src="/CV-Template/public/scripts/mycv_index.js"></script>

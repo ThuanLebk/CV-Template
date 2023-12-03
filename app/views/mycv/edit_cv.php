@@ -15,7 +15,28 @@ $skills = $cv_data['skills'];
 $projects = $cv_data['projects'];
 ?>
 
-
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="successfulToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <i class="fas fa-check fa-lg" style="color: #1bee6c;"></i>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Update successfully.
+    </div>
+  </div>
+</div>
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="failedToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <i class="fas fa-times fa-lg" style="color: #ff2929;"></i>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Update failed.
+    </div>
+  </div>
+</div>
 
 <div class="nav-container">
     <div class="cv-name-input">
@@ -420,6 +441,7 @@ $projects = $cv_data['projects'];
         </section>
     </div>
 </div>
+
 <br>
 <br>
 <script src="/CV-Template/public/scripts/index.js"></script>
