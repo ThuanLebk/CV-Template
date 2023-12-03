@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-auto">
                         <h1 style="color: #00b36b;">My CV</h1>
-                        <p style="color: black;"> <?= $_SESSION['logged_in'] ?> </p>
+                        <p style="color: black;"> <?= $_SESSION['username'] ?> </p>
                     </div>
                     <div class="col-lg-auto ms-auto">
                         <button href="/CV-Template/public/mycv/create_cv" type="button" class="button-create">
