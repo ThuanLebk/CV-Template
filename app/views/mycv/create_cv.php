@@ -298,7 +298,7 @@
                             </div>
                             <div class="description"></div>
                         </div>
-                        <div class="table">
+                        <div class="table p-0">
                             <div class="table-row" id="project-customer">
                                 <div class="header-cell">
                                     <span> Customer </span>

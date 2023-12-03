@@ -54,8 +54,6 @@
             ?>
         </tbody>
     </table>
-
-    <?php print_r(json_decode($data[0]['cv_data'], true)['education']) ?>
 </div>
 
 <script src="/CV-Template/public/scripts/mycv_index.js"></script>
