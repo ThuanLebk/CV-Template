@@ -493,13 +493,18 @@ function checkPersonalInfoValidity() {
 		};
 		isValid = false;
 	}
-	const addressValid = document.getElementById("address").checkValidity();
-	if (!addressValid) {
+	const address = document.getElementById("address");
+	if (!address.checkValidity() || address.value.trim().length === 0) {
 		document.getElementById("errorMessageAddress").textContent = "Please fill into this field";
 		document.getElementById("address").style.border = "1px solid red";
 		document.getElementById("address").onclick = function () {
 			document.getElementById("address").style.border = "none";
 		};
+
+        if (address.value.trim().length === 0) {
+            address.value = "";
+        }
+
 		isValid = false;
 	}
 
